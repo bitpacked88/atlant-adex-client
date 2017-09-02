@@ -1,0 +1,205 @@
+<!doctype html>
+<html class="no-js"
+      ng-class="{'block-desktop-layout': isDesktop, 'block-lite-layout': isLite, 'block-inner-layout': !isLite&&!isDesktop}"
+      ng-app="web" ng-strict-di ng-controller="rootCtrl">
+<head>
+    <meta charset="utf-8">
+    <title ng-bind="rootTitle">ATLANT DEX</title>
+    <base href="/">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- build:css css/style.css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endbuild -->
+
+    <link rel="stylesheet" href="css/print.css" media="print"/>
+</head>
+<body class="theme-white" btc-theme>
+
+<!-- global loading screen-->
+<div id="global-loader" class="block-common-loader _global" style="display:none;">
+    <div class="_logo">
+        <object type="image/svg+xml" data="/assets/common/logo_opt.svg" class="_loading-logo">
+            ATLANT
+        </object>
+    </div>
+    <script>
+        var appLoader = new function () {
+            var theTheme = localStorage['white_theme'] == "true" ? "white" : "black";
+            localStorage['white_theme'] = theTheme == "white";
+            document.getElementById("global-loader").classList.add("_" + theTheme);
+            document.getElementById("global-loader").style.display = "block";
+            return {
+                finish: function () {
+                    document.getElementById("global-loader").style.display = "none";
+                }
+            }
+        };
+    </script>
+</div>
+<!-- / global loading screen-->
+
+
+<btc-loader></btc-loader>
+
+<div ui-view class="blur"></div>
+
+<div class="block-desktop-alerts" ng-controller="commonAlertsCtrl">
+    <div class="_alert" ng-class="alert.type" ng-repeat="alert in alerts"><span class="_close"
+                                                                                ng-click="onClose(alert.id)"></span><strong>{{alert.title}}</strong>
+        {{alert.message}}
+    </div>
+</div>
+
+<!-- build:js js/vendor.js -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/nicescroll/jquery.nicescroll.js"></script>
+<script src="bower_components/Keypress/keypress-2.1.0.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/ng-file-upload/angular-file-upload-shim.min.js"></script>
+<script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
+<script src="bower_components/underscore/underscore-min.js"></script>
+<script src="bower_components/highstock-release/highstock.js"></script>
+<script src="bower_components/signalr/jquery.signalR.min.js"></script>
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/zeroclipboard/dist/ZeroClipboard.min.js"></script>
+<script src="js/vendor/tradingView/charting_library.min.js"></script>
+<script src="js/vendor/bootstrapUi/ui-bootstrap-custom-tpls-0.12.0.js"></script>
+<script src="js/vendor/qr/qrcode.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js js/app.js -->
+<script src="js/app.js"></script>
+<script src="js/configs/apiMethods.js"></script>
+<script src="js/configs/appConfig.js"></script>
+<script src="js/configs/appMessages.js"></script>
+<script src="js/configs/appRoutes.js"></script>
+<script src="js/configs/appNotifications.js"></script>
+<script src="js/configs/appHotkeys.js"></script>
+
+<script src="js/controllers/main.js"></script>
+<script src="js/controllers/root.js"></script>
+
+<script src="js/directives/btc-local-notification.js"></script>
+<script src="js/directives/btc-local-notification-html.js"></script>
+<script src="js/directives/btc-resizable.js"></script>
+<script src="js/directives/btc-nicescroll.js"></script>
+<script src="js/directives/btc-switch.js"></script>
+<script src="js/directives/btc-theme.js"></script>
+<script src="js/directives/btc-radio.js"></script>
+<script src="js/directives/btc-faq-togle.js"></script>
+<script src="js/directives/btc-departments-radio.js"></script>
+<script src="js/directives/btc-slider.js"></script>
+<script src="js/directives/btc-ngmodel-toFixed.js"></script>
+<script src="js/directives/btc-ngmodel-float.js"></script>
+<script src="js/directives/btc-ngmodel-dotFloat.js"></script>
+<script src="js/directives/btc-muted.js"></script>
+<script src="js/directives/btc-show-more.js"></script>
+<script src="js/directives/btc-tradingView.js"></script>
+<script src="js/directives/btc-gateway-field.js"></script>
+<script src="js/directives/btc-qr.js"></script>
+<script src="js/directives/btc-attach.js"></script>
+<script src="js/directives/btc-graph-resize.js"></script>
+<script src="js/directives/btc-menu-drop.js"></script>
+<script src="js/directives/btc-loader.js"></script>
+<script src="js/directives/btc-inner-loader.js"></script>
+<script src="js/directives/btc-trade-popup-draggeble.js"></script>
+<script src="js/directives/btc-hint.js"></script>
+<script src="js/directives/btc-dropdown.js"></script>
+<script src="js/directives/btc-checkbox.js"></script>
+<script src="js/directives/btc-focus.js"></script>
+<script src="js/directives/btc-credit-mask.js"></script>
+<script src="js/directives/btc-fee-module.js"></script>
+
+<script src="js/services/auth.js"></script>
+<script src="js/services/authInterceptor.js"></script>
+<script src="js/services/notification.js"></script>
+<script src="js/services/modal.js"></script>
+<script src="js/services/api.js"></script>
+<script src="js/services/hub.js"></script>
+<script src="js/services/keyboard.js"></script>
+<script src="js/services/datafeed.js"></script>
+<script src="js/services/currency.js"></script>
+<script src="js/services/desktop.js"></script>
+<script src="js/services/resolvers/root.js"></script>
+<script src="js/services/resolvers/inner.js"></script>
+<script src="js/services/resolvers/desktop.js"></script>
+<script src="js/services/splash.js"></script>
+
+<script src="js/controllers/common/header.js"></script>
+<script src="js/controllers/common/alerts.js"></script>
+<script src="js/controllers/common/referral.js"></script>
+<script src="js/controllers/desktop/actions.js"></script>
+<script src="js/controllers/desktop/orderBook.js"></script>
+<script src="js/controllers/desktop/desktopSettings.js"></script>
+<script src="js/controllers/desktop/generalStats.js"></script>
+<script src="js/controllers/desktop/graph.js"></script>
+<script src="js/controllers/desktop/orders.js"></script>
+<script src="js/controllers/desktop/pairChange.js"></script>
+<script src="js/controllers/desktop/personalStats.js"></script>
+<script src="js/controllers/desktop/tradePopup.js"></script>
+<script src="js/controllers/desktop/trades.js"></script>
+
+<script src="js/controllers/inner/mytrades.js"></script>
+<script src="js/controllers/inner/mytrades-column.js"></script>
+<script src="js/controllers/inner/contacts.js"></script>
+<script src="js/controllers/inner/fees.js"></script>
+<script src="js/controllers/inner/settings.js"></script>
+<script src="js/controllers/inner/accounts-column.js"></script>
+<script src="js/controllers/inner/accounts.js"></script>
+<script src="js/controllers/inner/verify.js"></script>
+<script src="js/controllers/inner/history.js"></script>
+<script src="js/controllers/inner/transactions.js"></script>
+<script src="js/controllers/inner/transactions-column.js"></script>
+<script src="js/controllers/inner/options.js"></script>
+<script src="js/controllers/inner/cta.js"></script>
+<script src="js/controllers/inner/restore-password.js"></script>
+<script src="js/controllers/inner/change.js"></script>
+
+<script src="js/controllers/pages/faq.js"></script>
+<script src="js/controllers/pages/maintenance.js"></script>
+
+<script src="js/controllers/dialog/signin.js"></script>
+<script src="js/controllers/dialog/register.js"></script>
+<script src="js/controllers/dialog/forgot.js"></script>
+<script src="js/controllers/dialog/twofa.js"></script>
+<script src="js/controllers/dialog/withdrawConfirm.js"></script>
+<script src="js/controllers/dialog/add-api.js"></script>
+<script src="js/controllers/dialog/cryptoGateway.js"></script>
+<script src="js/controllers/dialog/fiatGatewayIn.js"></script>
+<script src="js/controllers/dialog/fiatGatewayOut.js"></script>
+<script src="js/controllers/dialog/twofanotlogged.js"></script>
+<script src="js/controllers/dialog/personalData.js"></script>
+<script src="js/controllers/dialog/codeConfirm.js"></script>
+
+<script src="js/controllers/inner/welcome.js"></script>
+
+<script src="js/entities/abstract.js"></script>
+<script src="js/entities/collectionAbstract.js"></script>
+<script src="js/entities/order.js"></script>
+<script src="js/entities/collectionOrder.js"></script>
+
+<script src="js/filters/prefix.js"></script>
+<script src="js/filters/capitalize.js"></script>
+<script src="js/filters/postfix.js"></script>
+<script src="js/filters/toFixed.js"></script>
+<script src="js/filters/ticksToDateTime.js"></script>
+<script src="js/filters/ticksToMilliseconds.js"></script>
+<script src="js/filters/unixToDate.js"></script>
+<script src="js/filters/unixToDateTime.js"></script>
+<script src="js/filters/toBool.js"></script>
+<script src="js/filters/trust.js"></script>
+<script src="js/filters/currencyToFixed.js"></script>
+
+<script src="js/cache/wallet.js"></script>
+<!-- endbuild -->
+
+<script src="js/templates.js"></script>
+</body>
+</html>

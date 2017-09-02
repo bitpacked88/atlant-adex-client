@@ -1,0 +1,23 @@
+<div class="_header" ng-show="_title">{{_title}}<div class="_close" ng-click="$close()"></div></div>
+<div class="_body">
+    <div btc-local-notification="alertToShow" class="_error"></div>
+    <form novalidate name="signin" ng-submit="login()">
+        <div class="_field _text _short">
+            <label>
+                <span class="_label">Email</span>
+                <input type="text" name="email" ng-model="credentials.email" placeholder="Email" autofocus/>
+            </label>
+        </div>
+        <div class="_field _text">
+            <label>
+                <span class="_label">Password</span>
+                <input type="password" name="password" ng-model="credentials.password" placeholder="Password"/>
+            </label>
+        </div>
+        <div class="_actions">
+            <button class="_button">{{submitLabel}}</button>
+            <div class="_cancel" ng-click="onForgot($event)">Forgot password?</div>
+        </div>
+    </form>
+</div>
+<div class="_footer">Do not have an account? <a href="#" ng-click="onRegister($event)">Create an account</a></div>

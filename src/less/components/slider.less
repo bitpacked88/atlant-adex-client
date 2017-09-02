@@ -1,0 +1,98 @@
+.component-slider {
+  display: inline-block;
+
+  position: relative;
+  height: 20px;
+  width: 267px;
+
+  ._sl_drag {
+    display: inline-block;
+    position: absolute;
+    margin-left: -2px;
+    cursor: pointer;
+    top: 4px;
+    width: 9px;
+    height: 12px;
+    .mixin-css3>.rounded(2px);
+
+    &:before {
+      position: absolute;
+      content: attr(data-val);
+      .mixin-css3>.rounded(2px);
+      font-size: 10px;
+      padding: 4px;
+      white-space: nowrap;
+      margin-left: -17px;
+      top: -21px;
+    }
+
+    &:after {
+      position: absolute;
+      content: "";
+      top: -3px;
+      left: 50%;
+      margin-left: -2px;
+      border-width: 2px 2px 0px;
+      border-color: transparent;
+      border-style: solid;
+    }
+  }
+
+  ._sl_line {
+    position: absolute;
+    top: 10px;
+    display: block;
+    width: 100%;
+    height: 1px;
+  }
+
+  ._sl_dots {
+    display: block;
+    position: absolute;
+    width: 100%;
+
+    ._sl_dot {
+      position: absolute;
+      top: 8px;
+      display: block;
+      width: 5px;
+      height: 5px;
+      .mixin-css3>.rounded(3px);
+
+      &:before, &:after {
+        position: absolute;
+        top: 0;
+        content: "";
+        display: inline-block;
+        width: 1px;
+        height: 5px;
+        left: -1px;
+      }
+
+      &:after {
+        left: auto;
+        right: -1px;
+      }
+
+      &._sl_small {
+        top: 9px;
+        width: 3px;
+        height: 3px;
+      }
+    }
+  }
+
+  ._sl_captions {
+    position: absolute;
+    width: 100%;
+    top: -9px;
+    font-size: 11px;
+
+    ._sl_caption {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      margin-left: -0.3em;
+    }
+  }
+}

@@ -1,0 +1,63 @@
+.ngdialog._question {
+  .ngdialog-content {
+    width: 460px;
+  }
+
+
+  ._message textarea {
+    height: 100px;
+  }
+
+  input, textarea {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  ._attach {
+    margin-bottom: 39px;
+    font-size: 12px;
+
+    ._label {
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    ._files {
+      font-size: 11px;
+
+      ._file {
+        margin-left: -17px;
+        margin-bottom: 12px;
+
+        &._upload {
+          ._ico {
+            background-position: -48px -13px;
+          }
+        }
+
+        ._ico {
+          .mixin-ico(12px, 12px, -60px, -13px);
+          margin-right: 5px;
+        }
+
+        ._filename {
+          font-weight: bold;
+        }
+
+        ._file-action {
+          display: inline-block;
+          margin-left: 6px;
+          cursor: pointer;
+          color: #bfbfbf;
+        }
+      }
+    }
+
+    ._add {
+      color: #0f88a5;
+      font-size: 12px;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}

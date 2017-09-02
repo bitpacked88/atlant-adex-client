@@ -1,0 +1,105 @@
+<div class="block-inner-support">
+
+    <div ng-hide="processing">
+        <div class="_cta" ng-show="tickets.length == 0">
+            <p>No tickets</p>
+            <div class="button" ng-click="onSendQuestionClick()">Send question</div>
+        </div>
+
+        <div class="_item" ng-repeat="t in tickets" ng-show="tickets.length > 0">
+            <div class="_heading">
+                <div class="_status">{{t.status}}</div>
+                <div class="_subject">{{t.title}}</div>
+            </div>
+            <div class="_date-block">
+                <div class="_id-block">
+                    <div class="_id">id {{t.id}}</div>
+                    <div class="_stat">{{t.department}}</div>
+                </div>
+                <div class="_date">
+                    <div class="_opened">Date Opened <span class="_mark">{{t.createdAt | unixToDateTime}}</span><!-- <span class="_waiting">Waiting time <span class="_mark">3 minutes</span></span>--></div>
+                    <!-- <div class="_closed">Date Closed <span class="_mark">20:10:02, 20 Oct 2014</span></div> -->
+
+                </div>
+            </div>
+            <div class="_chat">
+                <div class="_message" ng-class="{_support: isModer(m), _you: !isModer(m)}" ng-repeat="m in t.messages">
+                    <div class="_name" ng-show="!isModer(m)">You:</div>
+                    <div class="_name" ng-show="isModer(m)">Support:</div>
+                    <div class="_txt">{{m.text}}</div>
+                    <div class="_screenshots" ng-show="m.files">
+                        <div class="_screenshot" ng-repeat="f in m.files">
+                            <a href="{{f.url}}" target="_blank"><img ng-src="{{f.url}}" alt="" width="200"/></a>{{f.uid}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="_action">
+                <a class="button" ui-sref="root.inner.left-col.support-chat({id: t.id})">Show Chat</a>
+            </div>
+        </div>
+
+        <div class="btc-show-more" count="count" limit="limit" offset="offset"></div>
+
+
+        <!-- <div class="_item _waiting-user">
+            <div class="_heading">
+                <div class="_status">waiting<br>for user</div>
+                <div class="_subject">Loud mining</div>
+            </div>
+            <div class="_date-block">
+                <div class="_id-block">
+                    <div class="_id">id S12e32W32</div>
+                    <div class="_stat">Partners</div>
+                </div>
+                <div class="_date">
+                    <div class="_opened">Date Opened <span class="_mark">20:07:29, 20 Oct 2014</span></div>
+                    <div class="_waiting">Waiting time <span class="_mark">3 minutes</span></div>
+                </div>
+            </div>
+            <div class="_chat">
+                <div class="_message _you">
+                    <div class="_name">You:</div>
+                    <div class="_txt">The inevitable decentralization of payment markets includes the most competent and skilled specialists from all over the world: financiers, investment bankers, financial engineers and lawyers.</div>
+                </div>
+
+                <div class="_message _support">
+                    <div class="_name">Support:<br><span class="_n">(Mike J.)</span></div>
+                    <div class="_txt">The company’s cornerstone is the popularization of the digital currency market as well as its development and availability worldwide. The most important challenge for the ATLANT team is providing the highest level of security for all operations performed at our trading platform.</div>
+                </div>
+            </div>
+
+            <div class="_action">
+                <a class="button" ui-sref="root.inner.left-col.support-chat">Show Chat</a>
+            </div>
+        </div>
+
+        <div class="_item _waiting-support">
+            <div class="_heading">
+                <div class="_status">waiting<br>for support</div>
+                <div class="_subject">Loud mining</div>
+            </div>
+            <div class="_date-block">
+                <div class="_id-block">
+                    <div class="_id">id S12e32W32</div>
+                    <div class="_stat">Partners</div>
+                </div>
+                <div class="_date">
+                    <div class="_opened">Date Opened <span class="_mark">20:07:29, 20 Oct 2014</span></div>
+                    <div class="_waiting">Waiting time <span class="_mark">3 minutes</span></div>
+                </div>
+            </div>
+            <div class="_chat">
+                <div class="_message _you">
+                    <div class="_name">You:</div>
+                    <div class="_txt">The inevitable decentralization of payment markets includes the most competent and skilled specialists from all over the world: financiers, investment bankers, financial engineers and lawyers.</div>
+                </div>
+            </div>
+
+            <div class="_action">
+                <a class="button" ui-sref="root.inner.left-col.support-chat">Show Chat</a>
+            </div>
+        </div> -->
+    </div>
+</div>

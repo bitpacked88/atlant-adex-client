@@ -1,0 +1,106 @@
+.block-desktop-myorders {
+  position: relative;
+  ._scrollable {
+    overflow: auto;
+  }
+
+  ._side-col {
+    width: 10%;
+  }
+
+  ._type-col {
+    width: 10%;
+  }
+
+  ._price-col {
+    width: 10%;
+  }
+
+  ._actual-amount-col {
+    width: 20%;
+  }
+
+  ._original-amount-col {
+    width: 20%;
+  }
+
+  ._w1 {
+    width: 1%;
+  }
+
+  ._status-col {
+    width: 9%;
+  }
+
+  ._action-col {
+    width: 20%;
+  }
+
+  ._editable {
+    background: #2d3f42;
+  }
+
+  input {
+    border: 0;
+    border-bottom: 1px solid #0f88a5;
+    background-color: transparent;
+    color: #fff;
+    width: 50px;
+  }
+
+  ._action-col {
+    width: 10%;
+
+    ._link {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    ._btns {
+      color: #808080;
+
+      span {
+        color: #0f88a5;
+      }
+    }
+
+    ._cancel {
+      color: #f05770;
+    }
+  }
+
+  &._cta {
+
+    .component-table._table-header {
+      .mixin-css3.opacity(0.3);
+    }
+  }
+
+  ._cta {
+    position: absolute;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    //z-index: 50;
+    z-index: 4;
+    margin-left: -200px;
+    margin-top: -15px;
+    text-align: center;
+
+    p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      display: inline-block;
+      &:first-of-type{
+        margin-right: 5px;
+      }
+      ._extra-font {
+        font-family: "Arial", sans-serif;
+        margin-left:2px;
+      }
+    }
+  }
+}

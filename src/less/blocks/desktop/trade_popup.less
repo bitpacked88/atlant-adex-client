@@ -1,0 +1,163 @@
+.block-desktop-trade_popup {
+  @padding-left: 18px;
+  @padding-right: 18px;
+
+  width: 696px;
+  //height: 496px;
+  border-width: 2px;
+  border-style: solid;
+  position: absolute;
+  left: 240px;
+  top: 70px;
+  .mixin-css3>.rounded(5px);
+  z-index: 5;
+
+  &._show {
+    display: block;
+  }
+
+  &._processing {
+
+    .block-common-loader {
+      display: block;
+      position: absolute;
+      background-color: transparent;
+    }
+
+    ._wrapper {
+
+
+      ._header, ._body, ._footer {
+        visibility: hidden;
+      }
+    }
+  }
+
+  .block-common-loader {
+    display: none;
+  }
+
+  ._wrapper {
+    border-top-width:10px;
+    border-top-style: solid;
+
+    ._header {
+      position: relative;
+      height: 57px;
+      padding-left: @padding-left;
+
+      ._close {
+        position: absolute;
+        right: 24px;
+        top: 20px;
+        cursor: pointer;
+        .mixin-ico(11px,11px, -30px, 0);
+      }
+
+      ._btns {
+        //overflow: auto; // for hint proper showing
+        padding-top: 12px;
+
+        ._btn {
+          float: left;
+          border: 2px solid;
+          .mixin-css3>.rounded(3px);
+          height: 24px;
+          line-height: 24px;
+          text-transform: uppercase;
+          font-weight: bold;
+          padding: 0 10px;
+          margin-right: 7px;
+          cursor: pointer;
+
+          &._active {
+            cursor: default;
+
+            ._ico {
+              //icon in theme
+            }
+          }
+
+          ._ico {
+            content: "";
+            vertical-align: -2px;
+            margin-left: 5px;
+            cursor: pointer;
+            //icon in theme
+          }
+        }
+      }
+    }
+
+    ._body {
+      //height: 352px;
+      padding: 0 @padding-right 0 @padding-left;
+
+      .component-table_header {
+        margin-bottom: 20px;
+      }
+
+      ._buy-sell {
+        //overflow: hidden;
+        &:after {
+          content:"";
+          display:table;
+          clear:both;
+        }
+
+        ._leverage {
+          margin-bottom: 21px;
+
+          ._title {
+            font-weight: bold;
+            display: inline-block;
+          }
+
+          .component-slider {
+            vertical-align: middle;
+            margin-left: 10px;
+          }
+        }
+
+        ._buy {
+          float: left;
+          width: 315px;
+          margin-right: 30px;
+        }
+
+        ._sell {
+          float: left;
+          width: 315px;
+        }
+      }
+    }
+
+    ._footer {
+      height: 57px;
+      padding-left: @padding-left;
+      padding-top: 20px;
+
+      ._actions {
+        overflow: auto;
+
+        ._buy {
+          float: left;
+          width: 340px;
+          margin-right: 30px;
+        }
+
+        ._sell {
+          float: left;
+        }
+
+        ._reset {
+          display: inline-block;
+          cursor: pointer;
+          border-bottom: 1px dashed;
+          margin-left: 18px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

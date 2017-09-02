@@ -1,0 +1,139 @@
+<div class="block-inner-settings">
+
+    <div class="_my-profile-block">
+        <div class="component-table_header _block-header"><span class="_txt">My profile</span></div>
+        <div class="_form component-form">
+            <div btc-local-notification="profileAlertToShow" class="_success"></div>
+            <div btc-local-notification="verification1" class="_success"></div>
+            <div btc-local-notification="verification2" class="_success"></div>
+            <div btc-local-notification="verification3"  class="_success"></div>
+            <div btc-local-notification="settingsError"  class="_error"></div>
+            <div class="_field _left">
+                <label>
+                    <span class="_label">First Name</span>
+                    <input type="text" ng-class="error.firstName? 'red':''" ng-model="profile.firstName"/>
+                </label>
+            </div>
+            <div class="_field _right">
+                <label><span class="_label">Last Name</span>
+                    <input type="text" ng-class="error.lastName? 'red':''" ng-model="profile.lastName"/></label>
+            </div>
+            <div class="_field _left">
+                <label><span class="_label">Country</span>
+                    <input type="text" ng-class="error.country? 'red':''" ng-model="profile.country"/></label>
+            </div>
+            <div class="_field _right">
+                <label><span class="_label">City</span>
+                    <input type="text" ng-class="error.city? 'red':''" ng-model="profile.city"/></label>
+            </div>
+            <div class="_field _left">
+                <label><span class="_label">Postal Code</span>
+                    <input type="text" ng-class="error.postalCode? 'red':''" ng-model="profile.postalCode"/></label>
+            </div>
+            <div class="_field _right">
+                <label><span class="_label">Address</span>
+                    <input type="text" ng-class="error.address? 'red':''" ng-model="profile.address"/></label>
+            </div>
+            <div class="_field">
+                <label>
+                    <span class="_label">Date of Birth</span>
+                </label>
+
+                <div class="_item">
+                    <input type="text" class="_small" ng-class="error.dayOfBirth? 'red':''" ng-model="dayOfBirth" maxlength="2" placeholder="Day"/>
+                </div>
+
+                <div class="_item _birth_month">
+                    <div btc-dropdown list="months" class="mainDropdown" ng-class="error.monthOfBirth? 'red':''" selected="monthOfBirth" placeholder="Select month"></div>
+                </div>
+
+                <div class="_item">
+                    <input type="text" class="_small" ng-class="error.yearOfBirth? 'red':''" ng-model="yearOfBirth" maxlength="4" placeholder="Year"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="button" ng-click="saveMyProfile()">{{saveProfileButtonLabel}}</div>
+    </div>
+    <div class="_2fa-block">
+        <div class="component-table_header _block-header">
+            <span class="_txt">2-FACTOR AUTHENTICATION VIA SMS / TELEGRAM</span>
+        </div>
+
+        <p>
+            To enhance account security please attach your phone number and select a default method to receive a random one-time password (2FA code).
+            You may select between SMS and <a href="https://telegram.org" target="_blank">Telegram</a>.
+        </p>
+        <p>
+            Your current phone number: <strong>{{ (profile.phoneNumber == null) ? '-' : profile.phoneNumber }}</strong>
+        </p>
+
+        <!--
+        <div class="_form component-form">
+            <div class="_field _current"><label><span class="_label">Mobile</span><input type="text" value="+1 123 412 24 23"/></label></div>
+        </div>
+        -->
+
+        <div ng-hide="profile.twoFactorEnabled" class="button" ng-click="twoFA({todo:'enable2fa'})">Activate</div>
+        <div ng-show="profile.twoFactorEnabled" class="button" ng-click="twoFA({todo:'disable2fa'})">Deactivate</div>
+    </div>
+    <div class="_security-block">
+        <div class="component-table_header _block-header"><span class="_txt">Security</span></div>
+        <div class="_form component-form">
+            <div btc-local-notification="securityAlertToShow" class="_success"></div>
+            <div btc-local-notification="alertToShow" class="_error"></div>
+            <div class="_field _current" ng-class="{_error: oldPasswordError}">
+                <label>
+                    <span class="_label">Current password</span>
+                    <input type="password" ng-model="oldPassword" name="oldPassword" required/>
+
+                    <div class="_message">{{oldPasswordError}}</div>
+                </label>
+            </div>
+            <div class="_field _new" ng-class="{_error: newPasswordError}">
+                <label>
+                    <span class="_label">New password</span>
+                    <input type="password" ng-model="newPassword" required/>
+
+                    <div class="_message">{{newPasswordError}}</div>
+                </label>
+            </div>
+            <div class="_field _retype" ng-class="{_error: confirmNewPasswordError}">
+                <label>
+                    <span class="_label">Repeat new password</span>
+                    <input type="password" ng-model="confirmNewPassword" required/>
+
+                    <div class="_message">{{confirmNewPasswordError}}</div>
+                </label>
+            </div>
+        </div>
+
+        <div class="button" ng-click="changePassword()">{{changePasswordButtonLabel}}</div>
+    </div>
+    <!--
+    <div class="_personal-block">
+        <div class="component-table_header _block-header"><span class="_txt">personal information</span></div>
+
+        <div class="_form component-form">
+            <div class="_field"><label><span class="_label">Email 1</span><input type="text" value="email@email.com"/></label></div>
+            <div class="_field"><label><span class="_label">Line 2</span><input type="text" value="Jack Jhones"/></label></div>
+            <div class="_field"><label><span class="_label">Line 3</span><input type="text" value="Rue"/></label></div>
+        </div>
+
+        <div class="button">Save settings</div>
+    </div>
+    -->
+    <!--
+    <div class="_2fa-block">
+        <div class="component-table_header _block-header"><span class="_txt">2-FA AUTHENTIFICATION</span></div>
+
+        <p>In the SMS password method, the user receives a random, one-time password<br>over SMS or automated voice call to a number previously registered with the service. </p>
+
+        <div class="_form component-form">
+            <div class="_field _current"><label><span class="_label">Mobile</span><input type="text" value="+1 123 412 24 23"/></label></div>
+        </div>
+
+        <div class="button" ng-click="onActivateClick()">Activate</div>
+    </div>
+    -->
+</div>

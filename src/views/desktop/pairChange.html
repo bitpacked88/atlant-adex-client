@@ -1,0 +1,13 @@
+<div class="block-desktop-options">
+    <div class="_current" ng-click="pair.toggle()">
+        <span class="_txt _desktop-txt">{{currentPair.derived.name}}/{{baseCurrency.name}}</span><btc-hint text="Click here to select and change currency pair"></btc-hint>
+    </div>
+    <div ng-class="pair.rate_class" class="_value">
+        {{baseCurrency.symbol}} <span btc-muted value="(baseCurrency.name == 'BTC') ? (pair.rate | toFixed:8) : (pair.rate | toFixed:2)"></span>
+    </div>
+    <ul class="_popup" ng-show="pair.show">
+        <li ng-repeat="item in pair.pairs">
+            <a href="#" ng-click="pair.changePair($event, item.name)">{{item.derived}} / {{item.base}}</a>
+        </li>
+    </ul>
+</div>

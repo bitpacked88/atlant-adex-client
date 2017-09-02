@@ -1,0 +1,38 @@
+<style>
+    ._copy-button {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        float: right;
+        vertical-align: bottom;
+        background: #3eb9d4 url("assets/affiliate/copy_link_button.gif") center no-repeat;
+    }
+</style>
+
+<div class="_header" ng-show="_title">{{_title}}
+    <div class="_close" ng-click="$close()"></div>
+</div>
+
+<div class="_body">
+    <form ng-submit="confirm()">
+        <div class="_form component-form component-html">
+            <p><b>Amount: </b> {{ request.amount + ' ' + request.currency}}</p>
+            <p ng-if="request.email != undefined"><b>Email: </b> {{ request.email }}</p>
+            <p ng-if="request.expiryPeriod != undefined"><b>Date of expire: </b> {{ request.targetDate | date: 'yyyy-MM-dd' }}</p>
+
+            <div ng-if="request.fiatCode != undefined" style="font-size: 14px"><b>Code:</b> {{request.fiatCode}} <div class="_copy-button" data-clipboard-text="{{request.fiatCode}}" id="copy-button"></div></div>
+
+            <b ng-if="request.fiatCode != undefined">
+                <br><br><br>
+                <p>HINT</p>
+                <p>We recommend you to save the code to clipboard by clicking the COPY icon. You can get this code anytime later in 'My transactions' page.</p>
+            </b>
+        <div ng-hide="request.fiatCode != undefined" class="_actions">
+            <div class="_button" ng-click="confirm()">Confirm</div>
+            <div class="_cancel" ng-click="$close()">Cancel</div>
+        </div>
+        <div ng-show="request.fiatCode != undefined" class="_actions">
+            <div class="_button" ng-click="$close()">OK</div>
+        </div>
+    </form>
+</div>

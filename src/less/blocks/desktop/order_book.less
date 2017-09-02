@@ -1,0 +1,83 @@
+.block-desktop-order_book {
+  position: relative;
+  margin-bottom: 10px;
+  overflow-y: hidden;
+
+  ._headers {
+    overflow: hidden;
+
+    ._col {
+      //width: 30%;
+    }
+  }
+
+  ._new {
+    color: #FBFFAC;
+  }
+
+  ._content {
+    height: auto;
+    overflow-y: scroll;
+  }
+
+  ._buy {
+    float: left;
+    width: 145px;
+    margin-right: 13px;
+  }
+
+  ._sell {
+    float: left;
+    width: 152px;
+  }
+
+  ._popup {
+    display: none;
+    z-index: 90;
+    background-color: #000;
+    color: #fff;
+    padding: 13px 22px 13px 14px;
+    position: absolute;
+    left: -185px;
+    width: 130px;
+    .mixin-css3> .rounded(2px);
+    opacity: 0.95;
+
+    &:before {
+      position: absolute;
+      content: "";
+      top: 50%;
+      right: -10px;
+      margin-top: -10px;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+
+      border-left: 10px solid #000;
+    }
+
+    table {
+      width: 100%;
+
+      tr:last-child td {
+        padding-bottom: 0;
+      }
+    }
+
+    td {
+      font-size: 16px;
+      text-align: right;
+      padding-bottom: 14px;
+    }
+
+    th {
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+
+  ._cursor {
+    cursor: pointer;
+  }
+}

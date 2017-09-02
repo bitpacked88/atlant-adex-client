@@ -1,0 +1,11 @@
+<span class="component-slider">
+    <span class="_sl_line"></span>
+
+    <span class="_sl_dots">
+        <span class="_sl_dot" ng-class="{_sl_small: dot.small}" ng-repeat="dot in dots" style="left: {{dot.left}}%"></span>
+    </span>
+    <span class="_sl_captions">
+        <span class="_sl_caption" ng-repeat="caption in captions" style="left: {{caption.left}}%">{{caption.caption | postfix:'x'}}</span>
+    </span>
+    <span class="_sl_drag" data-val="{{value | toFixed:3 | prefix:prefix | postfix:postfix}}"></span>
+</span>

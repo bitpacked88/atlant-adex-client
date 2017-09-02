@@ -1,0 +1,196 @@
+.block-inner-affiliate {
+    font-size:16px;
+    
+    
+    ._row {
+        box-sizing: border-box;
+        background:rgba(28,4,34,0.4);
+        overflow: hidden;
+        
+        
+    }
+    
+    
+    ._row--1 {
+        padding: 20px 0 40px 0;
+        text-align: center;
+        
+        ._header{
+            color:#fff;
+            text-align: center;
+            line-height: 30px;
+            height: 30px;
+            margin-bottom:10px;
+        }
+        ._link-url{
+            font-size: 18px;
+            color:#888;
+            line-height: 40px;
+            height:40px; width:800px;
+            display: inline-block; vertical-align: bottom;
+            background:#fff;
+            text-align: center;
+        }
+        ._copy-button{
+            cursor: pointer;
+            width:40px; height:40px;
+            display: inline-block; vertical-align: bottom;
+            background:#3eb9d4 url("@{assets}/affiliate/copy_link_button.gif") center no-repeat;
+
+            &:hover {
+                background-color: #41c7e3;
+            }
+        }
+    }
+    
+    
+    ._row--2 {
+        ._step{
+            height:200px;
+            width:360px;
+            position:relative;
+            color:#45215c;
+            display: inline-block; vertical-align: bottom;
+            ._icon{
+                position:absolute;
+                width:220px; height:90px;
+                top:15px; left:50%; margin:0 0 0 -110px;
+            }
+            ._header{
+                position:absolute;
+                width:220px; height:30px; line-height: 30px;
+                top:120px; left:50%; margin: 0 0 0 -110px;
+                font-size:24px; text-align: center;
+            }
+            ._subheader{
+                position:absolute;
+                width:220px; height:24px; line-height: 24px;
+                top:150px; left:50%; margin: 0 0 0 -110px;
+                font-size:16px; text-align: center;
+            }
+            ._arrow {
+                    position: absolute;
+                    margin: -10px;
+                    top: 50%;
+                    right: 2px;
+                    transform: rotate3d(0, 0, 1, 45deg);
+                    z-index: 1;
+                    width: 20px;
+                    height: 20px;
+            }
+        }
+        ._step--1{
+            background:#fff;
+            ._icon{   background: url("@{assets}/affiliate/step_1_icon.png") center no-repeat;  }
+            ._arrow{  background: #fff;  }
+        }
+        ._step--2{
+            background:#3eb9d4;
+            ._icon{   background: url("@{assets}/affiliate/step_2_icon.png") center no-repeat;  }
+            ._arrow{  background: #3EB9D4;  }
+        }
+        ._step--3{
+            background:#4653ac;
+            color:#ebf8fb;
+            ._icon{   background: url("@{assets}/affiliate/step_3_icon.png") center no-repeat;  }
+        }
+    }
+    
+    
+    ._row--3 {
+        padding:30px 70px 40px 70px;
+        
+        ._header{
+            text-align: center;
+            font-size:18px;
+            color:#3eb9d4;
+        }
+        ._steps{
+            width:720px; height:80px;
+            margin: 40px auto 0 auto;
+            ._step{
+                font-size:18px; color:#fff;
+                width:260px; height:80px;
+                ._digit{
+                    width:60px; height:80px;
+                    float:left; margin-right:18px;
+                }
+            }
+            ._step--1{
+                float:left;
+                ._digit{  background: url("@{assets}/affiliate/digit_1.png") right center no-repeat;  }
+            }
+            ._step--2{
+                float:right;
+                ._digit{  background: url("@{assets}/affiliate/digit_2.png") right center no-repeat;  }
+            }
+        }
+    }
+    ._row--4 {
+        padding:60px 70px 70px 70px;
+        background:#fff;
+        
+        ._header{
+            text-align: center;
+            font-size:18px;
+            color:#29355f;
+            margin-bottom:50px;
+        }
+        
+        ._affiliate-conditions{
+            text-align: center;
+            
+            ._column{
+                text-align: center;
+                display:inline-block; vertical-align: bottom;
+                width:300px; height:100px;
+                
+                ._check{
+                    display:inline-block;
+                    width:50px; height:50px; margin-top: 15px;
+                    background: url('@{assets}/affiliate/check_circle_not_checked.png') center no-repeat;
+                }
+                ._done{
+                    background: url('@{assets}/affiliate/check_circle_checked.png') center no-repeat;
+                }
+            }
+        }
+        
+        ._charts{
+            text-align: center;
+            ._column{
+                display:inline-block; vertical-align: bottom;
+                width:230px; height:350px;
+                margin-right:100px; &:last-of-type {margin-right:0;}
+                
+                ._chart{
+                    width:230px; height:230px;
+                    background:#ccc;
+                    _chart-center-label {
+                        font-size:24px;
+                        text-align: center;
+                        _chart-value {
+                            font-weight: bold;
+                        }
+                    }
+                }
+                ._comment{
+                    position:relative;
+                    width:230px; height:70px;
+                    text-align: center;
+                    div {
+                        width: 100%;
+                        position: absolute; bottom: 0;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+    ._row--5 {
+        padding:30px 70px 30px 70px;
+        background:#3eb9d4;
+        
+        
+    }
+}

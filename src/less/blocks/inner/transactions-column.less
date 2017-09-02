@@ -1,0 +1,114 @@
+.block-inner-transactions-column {
+
+  ._account {
+    margin-bottom: 32px;
+    position: relative;
+
+    ._title {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    ._id {
+      font-size: 20px;
+      cursor: pointer;
+
+      &:after {
+        display: inline-block;
+        content: "";
+        width: 14px;
+        height: 15px;
+        margin-left: 5px;
+        margin-bottom: -1px;
+        background: url("@{assets}/common/currency_switch_arrow_blue.png") center no-repeat;
+        background-size: 13px 9px;
+      }
+    }
+
+    ._popup {
+      margin-top: 10px;
+
+      li {
+        margin-bottom: 5px;
+        a {
+          display: block;
+          color: #0f88a5;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  .component-date-range {
+    margin-bottom: 19px;
+  }
+
+  ._details {
+    border-top: 1px solid #c5ebef;
+    padding-top: 23px;
+    font-size: 12px;
+
+    ._details-title {
+      font-weight: bold;
+      margin-bottom: 17px;
+    }
+
+    ._status {
+      font-size: 10px;
+      color: #616465;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    ._balance, ._hold {
+
+      ._title {
+        margin-bottom: 7px;
+      }
+
+      ._value {
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 17px;
+      }
+    }
+
+    ._hold {
+      margin-bottom: 8px;
+    }
+
+    ._actions {
+      margin-bottom: 18px;
+
+      ._add, ._withdraw, ._transfer {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      ._add {
+        color: #3c763d;
+      }
+
+      ._withdraw {
+        color: #d43f3a;
+      }
+
+      ._transfer {
+        color: #ac8900;
+      }
+    }
+  }
+
+  .button {
+    width: 150px;
+    &:hover {
+      width: 146px;
+
+    }
+  }
+
+}

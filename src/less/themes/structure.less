@@ -1,0 +1,395 @@
+.themes-structure() {
+
+  & {
+    color: @main_text_color;
+  }
+
+  background-color: @background_color;
+
+  a {
+    color: @main_blue;
+  }
+
+  .block-desktop-content {
+    ._left-col {
+      background-color: @column_background;
+
+      .component-table_header {
+
+        &:before {
+          background-color: @component-table_header-column-line-bg;
+        }
+
+        ._txt {
+          background-color: @column_background;
+        }
+      }
+
+      .component-switch {
+        background-color: @column_background;
+      }
+    }
+  }
+  .block-desktop-desktop_settings {
+    .component-switch + ._txt {
+      color: #0f88a5;
+    }
+
+    .component-switch._off + ._txt {
+      color: #808080;
+    }
+  }
+  .block-desktop-trade_popup {
+    border-color: @block-desktop-trade_popup_btn_border_color;
+    background-color: @block-desktop-trade_popup_bg;
+
+    ._wrapper {
+      border-color: @block-desktop-trade_popup_btn_border_color;
+
+      ._header {
+        ._btn {
+          color: @block-desktop-trade_popup_btn_text_color;
+          border-color: @block-desktop-trade_popup_btn_border_color;
+
+          &._active {
+            background-color: @block-desktop-trade_popup_btn_active_bg_color;
+            border-color: @block-desktop-trade_popup_btn_active_border_color;
+            color: @block-desktop-trade_popup_btn_active_text_color;
+
+            ._ico {
+              .mixin-ico(12px, 12px, @block-desktop-trade_popup_btn_active_ico_offset, -35px)
+            }
+          }
+
+          &:hover {
+            border-color: @block-desktop-trade_popup_btn_hover_border_color;
+          }
+
+          ._ico {
+            .mixin-ico(12px, 12px, @block-desktop-trade_popup_btn_ico_offset, -35px)
+          }
+        }
+      }
+
+      ._footer {
+        background-color: @block-desktop-trade_popup_footer_bg;
+
+        ._reset {
+          color: @block-desktop-trade_popup_reset_color;
+        }
+      }
+    }
+  }
+  .block-desktop-buy_sell {
+    ._popup {
+      background-color: @block-desktop-buy_sell-foreground;
+      color: @block-desktop-buy_sell-background;
+
+      &:before {
+        border-left-color: @block-desktop-buy_sell-foreground;
+      }
+    }
+  }
+  .block-desktop-myorders {
+  }
+  .block-desktop-options,
+  .block-inner-options {
+    ._current {
+      color: @block-desktop-options_current-text-color;
+    }
+
+    ._value {
+      color: @component-table-green;
+
+      &.red {
+        color: @component-table-red;
+      }
+    }
+
+    ._popup {
+      background-color: @block-desktop-options_popup-background;
+
+      &:before {
+        border-bottom-color: @block-desktop-options_arrow-background;
+      }
+
+      li {
+
+        &._active {
+          a {
+            color: @block-desktop-options_row-active-color;
+          }
+        }
+
+        a {
+          color: @block-desktop-options_row-color;
+          border-bottom-color: @block-desktop-options_row-border-color;
+
+          &:hover {
+            border-bottom-color: @block-desktop-options_row_border-hover-color;
+          }
+        }
+      }
+
+    }
+  }
+
+  //directives
+  .directive-btc-radio {
+    span {
+      border-color: @directive-btc-radio_border-color;
+      color: @directive-btc-radio_color;
+      background-color: @directive-btc-radio_background;
+
+      &._active {
+        background-color: @directive-btc-radio_active-background;
+        color: @directive-btc-radio_active-color;
+        border-color: @directive-btc-radio_active-border-color;
+      }
+    }
+  }
+
+  .btc-trading-view {
+    ._range {
+      &:hover {
+        background: #0f88a5;
+        color: @background_color;
+      }
+      &._selected {
+        background: #0f88a5;
+        color: @background_color;
+        &:hover {
+          background: #0B7D98;
+          color: @background_color;
+        }
+      }
+    }
+  }
+
+  //components
+  .component-table_header {
+
+    &:before {
+      background-color: @component-table_header-line-bg;
+      border-bottom-color: @component-table_header-line-brd;
+    }
+
+    ._txt {
+      background-color: @background_color;
+      color: @component-table_header-text-color;
+    }
+  }
+  .component-switch {
+    background-color: @background_color;
+
+    &:before {
+      color: @component-switch-text-color;
+      background-color: @component-switch-btn-on-bg;
+    }
+
+    &:after {
+      background-color: @component-switch-btn-part-on-bg;
+    }
+
+    &._off {
+
+      &:before {
+        background-color: @component-switch-btn-off-bg;
+      }
+
+      &:after {
+        background-color: @component-switch-btn-part-off-bg;
+      }
+    }
+  }
+  .component-table {
+    ._red {
+      color: @component-table-red;
+    }
+    ._muted {
+      color: @component-table-muted;
+    }
+    ._green {
+      color: @component-table-green;
+    }
+    ._yellow {
+      color: @component-table-yellow;
+    }
+    ._blue {
+      color: @component-table-blue;
+    }
+    ._partiallyFilled_ico {
+      background-position: @component-table_partiallyFilled_ico;
+    }
+    ._accepted_ico {
+      background-position: @component-table_accepted_ico;
+    }
+    ._filled_ico {
+      background-position: @component-table_filled_ico;
+    }
+    ._cancelled_ico {
+      background-position: @component-table_cancelled_ico;
+    }
+    &._info {
+      thead td {
+        border-bottom-color: @component-table-header-brd;
+      }
+
+      tr._selected {
+        td, &:hover td {
+          background-color: @component-table-selected-color;
+        }
+        td._editable input {
+          border-bottom-color: #2a97af;
+          color: @component-table-editable-color;
+        }
+      }
+    }
+    &._hovers {
+      tr {
+        &:hover td {
+          background-color: @component-table-hover-color;
+
+          ._muted {
+            color: #aaa;
+          }
+        }
+
+        &._muted:hover {
+          color: @main_text_color;
+        }
+      }
+
+    }
+
+  }
+  .modal-content {
+    .component-form {
+      input {
+        width: 100%;
+        padding: 0 10px;
+        margin: 0;
+        border: 1px solid #87c3d2;
+        .mixin-css3>.rounded(2px);
+        font-size: 14px;
+        line-height: 35px;
+        height: 35px;
+        box-sizing: border-box;
+        background-color: #fff;
+        color: #000;
+
+        &:focus {
+          outline: 0;
+          background-color: #f1f7ef;
+          border-color: #b9d7b1;
+        }
+      }
+    }
+  }
+  .component-form {
+
+    ._field {
+
+      label {
+        position: relative;
+        ._label._disabled {
+          color: @component-form-label-disabled-color;
+        }
+      }
+    }
+
+    input {
+      border-color: @component-form-input-border-color;
+      background-color: @component-form-input-bg-color;
+      color: @component-form-input-color;
+
+      &:disabled {
+        border-color: @component-form-input-disabled-border-color;
+        background-color: @component-form-input-disabled-bg-color;
+        color: @component-form-input-disabled-color;
+
+        + ._mark {
+          color: @component-form-input-disabled-mark-color;
+        }
+      }
+
+      + ._mark {
+        color: @component-form-input-mark-color;
+      }
+    }
+
+    ._click {
+      input {
+
+        + ._mark {
+          width: 45px;
+          margin-left: -45px;
+          cursor: pointer;
+
+          &:after {
+            display: inline-block;
+            content: "";
+            width: 11px;
+            height: 7px;
+            margin-left: 3px;
+
+            background: url("@{assets}/common/currency_switch_arrow_blue.png") center no-repeat;
+            background-size: 11px 7px;
+          }
+        }
+      }
+    }
+
+    ._popup {
+      position: absolute;
+      right: 6px;
+      border: 1px solid @component-form-input-border-color;
+      padding: 10px 15px;
+      font-size: 11px;
+      top: 22px;
+      background-color: @background_color;
+      z-index: 1;
+      cursor: pointer;
+    }
+  }
+  .component-slider {
+    ._sl_drag {
+      background-color: @component-slider-drag-color;
+
+      &:before {
+        background-color: @component-slider-bubble-bg-color;
+        color: @component-slider-bubble-color;
+      }
+
+      &:after {
+        border-top-color: @component-slider-bubble-bg-color;
+      }
+    }
+
+    ._sl_line {
+      background-color: @component-slider-line-color;
+    }
+
+    ._sl_dots {
+      ._sl_dot {
+        background-color: @component-slider-dot-color;
+
+        &:before, &:after {
+          background-color: @component-slider-bg;
+        }
+
+        &._sl_small {
+          background-color: @component-slider-dot-small-color;
+        }
+      }
+    }
+
+    ._sl_captions {
+      color: @component-slider-digits-color;
+    }
+  }
+
+  .nicescroll-rails div {
+    border: 0 !important;
+  }
+}

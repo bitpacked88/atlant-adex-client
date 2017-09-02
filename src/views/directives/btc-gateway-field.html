@@ -1,0 +1,5 @@
+<div ng-switch on="field.type">
+    <div ng-switch-when="String" class="_field _full"><label><span class="_label">{{field.title}}</span><input ng-model="field.value" type="text" /></label></div>
+    <div ng-switch-when="Text" class="_field _full"><label><span class="_label">{{field.title}}</span><input ng-model="field.value" type="text" ng-disabled="true" /></label></div>
+    <div ng-switch-when="Qr" class="_field _full"><label><span class="_label">{{field.title}}</span><div btc-qr value="field.value"></div></label></div>
+</div>

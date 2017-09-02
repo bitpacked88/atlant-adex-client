@@ -1,0 +1,72 @@
+<div class="block-desktop-personal_stats" ng-if="personalStats.auth">
+    <div class="component-table_header"><span class="_txt">Personal Statistics</span></div>
+    <table class="component-table _stats">
+        <tr class="_title">
+            <td>Available</td>
+            <td>Blocked</td>
+        </tr>
+        <tr class="_data">
+            <td>
+                <div ng-class="personalStats.classes.availableFunds">
+                    {{baseCurrency.symbol}} <span btc-muted value="personalStats.info.availableFunds | toFixed:2"></span>
+                </div>
+                <div ng-class="personalStats.classes.derivedAvailableFunds">
+                    {{currentPair.derived.symbol}} <span btc-muted value="personalStats.info.derivedAvailableFunds | toFixed:4"></span>
+                </div>
+            </td>
+            <td>
+                <div ng-class="personalStats.classes.blockedFunds">
+                    {{baseCurrency.symbol}} <span btc-muted value="personalStats.info.blockedFunds | toFixed:2"></span>
+                </div>
+                <div ng-class="personalStats.classes.derivedBlockedFunds">
+                    {{currentPair.derived.symbol}} <span btc-muted value="personalStats.info.derivedBlockedFunds | toFixed:4"></span>
+                </div>
+            </td>
+
+        </tr>
+        <tr class="_title">
+            <td>Trade Balance</td>
+            <td>Your Fee</td>
+        </tr>
+        <tr class="_data">
+            <td>
+                <div ng-class="personalStats.classes.tradeFunds">
+                    {{baseCurrency.symbol}} <span btc-muted value="personalStats.info.tradeFunds | toFixed:2"></span>
+                </div>
+                <div ng-class="personalStats.classes.derivedTradeFunds">
+                    {{currentPair.derived.symbol}} <span btc-muted value="personalStats.info.derivedTradeFunds | toFixed:4"></span>
+                </div>
+            </td>
+            <td ng-class="personalStats.classes.fee">
+                <span btc-muted value="personalStats.info.makerFee | toFixed:4"></span>% maker
+                <span btc-muted value="personalStats.info.takerFee | toFixed:4"></span>% taker
+            </td>
+        </tr>
+
+        <tr class="_title">
+            <td>Equity</td>
+            <td>Margin</td>
+        </tr>
+        <tr class="_data">
+            <td ng-class="personalStats.classes.equity">
+                {{baseCurrency.symbol}} <span btc-muted value="personalStats.info.equity | toFixed:2"></span>
+            </td>
+            <td ng-class="personalStats.classes.margin">
+                {{baseCurrency.symbol}} <span btc-muted value="personalStats.info.margin | toFixed:2"></span>
+            </td>
+        </tr>
+
+        <tr class="_title">
+            <td>Free Margin</td>
+            <td>Margin Level</td>
+        </tr>
+        <tr class="_data">
+            <td ng-class="personalStats.classes.freeMargin">
+                {{baseCurrency.symbol}} <span btc-muted value="personalStats.info.freeMargin | toFixed:2"></span>
+            </td>
+            <td ng-class="personalStats.classes.marginLevel">
+                <span btc-muted value="personalStats.info.marginLevel | toFixed:4"></span>%
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,44 @@
+.block-inner-options {
+  .block-desktop-options;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  ._current {
+    color: #fff;
+
+    ._ico {
+      .mixin-ico(12px, 12px, -23px, -35px);
+    }
+  }
+
+  ._value {
+    display: inline-block;
+    margin-left: 10px;
+    color: #74af63;
+
+    &.red {
+      color: #d95254;
+    }
+  }
+
+  ._popup {
+    &:before {
+      border-bottom-color: #00244c;
+    }
+
+    li {
+
+      a {
+        color: #ffffff;
+        border-bottom: 1px solid #049cff;
+
+        &:hover {
+          border-bottom: 1px solid #fff;
+        }
+      }
+    }
+  }
+
+}

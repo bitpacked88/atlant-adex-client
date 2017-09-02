@@ -1,0 +1,31 @@
+<div class="block-inner-accounts-column" ng-if="show">
+
+    <div class="_item">
+        <div class="_profile-id-label">Profile ID</div>
+        <div class="_profile-id">S-{{user.id}}</div>
+
+        <div class="_status-label">Status</div>
+        <div class="_status" ng-class="{'_verified': verified, '_not-verified': !verified}">{{statusText}}</div>
+    </div>
+
+    <div class="_item _long">
+        <div class="_profile-id-label">Verification progress</div>
+        <div class="_progress">
+            <div class="_progress-bar" style="width:{{user.verificationPercent}}%">
+                {{user.verificationPercent}}%
+            </div>
+        </div>
+
+        <div class="_percents">
+            <div ng-class="{_done:user.firstName}"><strong>+5%</strong> - add First Name</div>
+            <div ng-class="{_done:user.lastName}"><strong>+5%</strong> - add Last Name</div>
+            <div ng-class="{_done:user.country}"><strong>+5%</strong> - add Country</div>
+            <div ng-class="{_done:user.address}"><strong>+5%</strong> - add Address</div>
+            <div ng-class="{_done:user.dateOfBirth}"><strong>+5%</strong> - add Date of Birth</div>
+            <div ng-class="{_done:user.phoneNumber}"><strong>+5%</strong> - attach phone number</div>
+            <div ng-class="{_done:user.accountVerificationStatus >= 3}"><strong>+20%</strong> - profile verified</div>
+            <div ng-class="{_done:user.proofOfIdentityConfirmed}"><strong>+25%</strong> - Proof of Identity verified</div>
+            <div ng-class="{_done:user.proofOfResidencyConfirmed}"><strong>+25%</strong> - Proof of Residency verified</div>
+        </div>
+    </div>
+</div>

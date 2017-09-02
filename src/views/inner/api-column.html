@@ -1,0 +1,17 @@
+<div class="block-inner-api-column">
+    <b>HTTP API</b>
+    <br/><br/>
+    <ul class="component-left-column-menu">
+        <li ui-sref-active="_active"><a ui-sref="root.inner.left-col.api_access({filter: ''})">All types<span class="_cnt">{{counts.total}}</span></a></li>
+        <li ui-sref-active="_active"><a ui-sref="root.inner.left-col.api_access({filter: 'info'})">INFO<span class="_cnt">{{counts.info}}</span></a></li>
+        <li ui-sref-active="_active"><a ui-sref="root.inner.left-col.api_access({filter: 'trade'})">TRADE<span class="_cnt">{{counts.trade}}</span></a></li>
+    </ul>
+    <div class="left-column-button _generate-key" ng-click="generateKey()">Generate HTTP API key</div>
+    <br/><br/>
+    <b>FIX API</b>
+    <br/><br/>
+    <ul class="component-left-column-menu">
+        <li ui-sref-active="_active"><a ui-sref="root.inner.left-col.api_access({filter: 'fix'})">All logins</a></li>
+    </ul>
+    <div class="left-column-button _generate-key" ng-click="generateFixKey()">Generate FIX API login</div>
+</div>

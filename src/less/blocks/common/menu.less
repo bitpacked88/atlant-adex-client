@@ -1,0 +1,154 @@
+.block-common-menu {
+  position: absolute;
+  left: 240px;
+  top: 13px;
+  .raleway_font_mix();
+
+  a, ._not-a {
+    & > li {
+      cursor: pointer;
+      float: left;
+      position: relative;
+      font-weight: 400;
+      font-size: 14px;
+      padding: 11px 14px 22px 14px;
+      .mixin-css3>.border-radius(2px, 0, 0, 2px);
+
+      &._active {
+        font-weight: bold;
+
+        span {
+          color: #95d2d9;
+        }
+
+        & > ul li span {
+          color: #fff;
+        }
+      }
+
+      & > span {
+        position: relative;
+
+        &:after {
+          display: none;
+          content: "";
+          width: 100%;
+          height: 2px;
+          background-color: #fff;
+          position: absolute;
+          left: 0;
+          bottom: -11px;
+        }
+      }
+
+      span {
+        color: #fff !important;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      &:hover {
+        //background: #049cff;
+
+        & > span:after {
+          display: block;
+        }
+
+        & > ul {
+          display: block;
+        }
+      }
+
+      &._active:hover {
+
+        & > span {
+          color: #fff;
+
+          &:after {
+            background-color: #fff;
+          }
+        }
+      }
+
+      &._active {
+
+        & > span:after {
+          display: block;
+          background-color: #049cff;
+        }
+
+        &._drop {
+          & > a:after {
+            background-position: -20px -3px;
+          }
+        }
+      }
+
+
+      &._drop {
+
+        & > span {
+          &:after {
+            .mixin-ico(9px,3px, -20px, 0);
+            left: 50%;
+            margin-left: -5px;
+          }
+        }
+
+        &:hover {
+          & > span:after {
+            background-color: #fff;
+            margin: 0;
+            width: 100%;
+            left: 0;
+            height: 2px;
+            background-image: none;
+          }
+        }
+      }
+
+      & > ul {
+        font-weight: normal;
+        display: none;
+        //opacity: 0.8;
+        //display: block;
+        margin-top: 13px;
+        position: absolute;
+        left: 0;
+        padding: 15px 14px 13px 14px;
+        background-color: #049cff;
+        .mixin-css3.border-radius(2px, 2px, 2px, 0);
+        z-index: 200;
+
+        li {
+          white-space: nowrap;
+          border-bottom: 1px solid #97c4dc;
+          font-size: 13px;
+
+          a {
+            display: block;
+            padding: 9px 20px 9px 0;
+            box-sizing: border-box;
+            color:rgba(255,255,255,0.95);
+            text-decoration: none;
+            &:hover{
+              color:#fff;
+            }
+          }
+
+          &:hover {
+            border-bottom: 1px solid #fff;
+          }
+
+          &:last-child {
+            border: 0;
+            padding-bottom: 0;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

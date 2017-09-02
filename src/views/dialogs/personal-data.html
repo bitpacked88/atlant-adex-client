@@ -1,0 +1,57 @@
+<div class="_header" ng-show="_title">{{_title}}<div class="_close" ng-click="$close()"></div></div>
+<div class="_body">
+    <div class="block-inner-settings">
+    <div class="_my-profile-block">
+        <div class="_form component-form">
+            <div btc-local-notification="profileAlertToShow" class="_success"></div>
+            <div btc-local-notification="verification" class="_success"></div>
+            <div btc-local-notification="settingsError" class="_error"></div>
+            <div class="_field _left">
+                <label>
+                    <span class="_label">First Name</span>
+                    <input type="text" ng-class="error.firstName? 'red':''" ng-model="profile.firstName"/>
+                </label>
+            </div>
+            <div class="_field _right">
+                <label><span class="_label">Last Name</span>
+                    <input type="text" ng-class="error.lastName? 'red':''" ng-model="profile.lastName"/></label>
+            </div>
+            <div class="_field _left">
+                <label><span class="_label">Country</span>
+                    <input type="text" ng-class="error.country? 'red':''" ng-model="profile.country"/></label>
+            </div>
+            <div class="_field _right">
+                <label><span class="_label">City</span>
+                    <input type="text" ng-class="error.city? 'red':''" ng-model="profile.city"/></label>
+            </div>
+            <div class="_field _left">
+                <label><span class="_label">Postal Code</span>
+                    <input type="text" ng-class="error.postalCode? 'red':''" ng-model="profile.postalCode"/></label>
+            </div>
+            <div class="_field _right">
+                <label><span class="_label">Address</span>
+                    <input type="text" ng-class="error.address? 'red':''" ng-model="profile.address"/></label>
+            </div>
+            <div class="_field">
+                <label>
+                    <span class="_label">Date of Birth</span>
+                </label>
+
+                <div class="_item">
+                    <input type="text" class="_small" ng-class="error.dayOfBirth? 'red':''" ng-model="dayOfBirth" maxlength="2" placeholder="Day"/>
+                </div>
+
+                <div class="_item _birth_month">
+                    <div btc-dropdown list="months" class="mainDropdown" ng-class="error.monthOfBirth? 'red':''" selected="monthOfBirth" placeholder="Select month"></div>
+                </div>
+
+                <div class="_item">
+                    <input type="text" class="_small" ng-class="error.yearOfBirth? 'red':''" ng-model="yearOfBirth" maxlength="4" placeholder="Year"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="button" ng-click="saveMyProfile()">{{saveProfileButtonLabel}}</div>
+    </div>
+    </div>
+</div>

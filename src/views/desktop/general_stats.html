@@ -1,0 +1,33 @@
+<div class="block-desktop-general_stats">
+    <div class="component-table_header"><span class="_txt">General Statistics</span></div>
+    <table class="component-table _stats">
+        <tr class="_title">
+            <td>Bid</td>
+            <td>Ask</td>
+        </tr>
+        <tr class="_data">
+            <td ng-class="classes.bid">{{baseCurrency.symbol}} <span btc-muted value="stats.bid | toFixed:4"></span></td>
+            <td ng-class="classes.ask">{{baseCurrency.symbol}} <span btc-muted value="stats.ask | toFixed:4"></span></td>
+        </tr>
+        <tr class="_title">
+            <td>24h volume</td>
+            <td>Daily Change <span ng-class="{_ico_down: !stats.changeVector, _ico_up: stats.changeVector}"></span></td>
+        </tr>
+        <tr class="_data">
+            <td ng-class="classes.volume">
+                {{currentPair.derived.symbol}} <span btc-muted value="stats.volume | toFixed:4"></span>
+            </td>
+            <td ng-class="classes.change" ng-class="{_red: !stats.changeVector, _green: stats.changeVector}">
+                <span btc-muted value="stats.change | toFixed:4"></span>%
+            </td>
+        </tr>
+        <tr class="_title">
+            <td>High</td>
+            <td>Low</td>
+        </tr>
+        <tr class="_data">
+            <td>{{baseCurrency.symbol}} <span btc-muted value="stats.high | toFixed:4"></span></td>
+            <td>{{baseCurrency.symbol}} <span btc-muted value="stats.low | toFixed:4"></span></td>
+        </tr>
+    </table>
+</div>

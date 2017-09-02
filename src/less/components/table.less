@@ -1,0 +1,130 @@
+.component-table {
+  margin-bottom: 10px;
+  width: 100%;
+
+  ._bold {
+    font-weight: bold;
+  }
+
+  ._bids {
+    color: green;
+  }
+
+  ._asks {
+    color: red;
+  }
+
+  ._thick {
+    font-weight: normal;
+  }
+
+  ._partiallyFilled_ico {
+    .mixin-ico(12px,12px, 0, -11px);
+  }
+
+  ._accepted_ico {
+    .mixin-ico(12px,12px, -12px, -11px);
+  }
+
+  ._filled_ico {
+    .mixin-ico(12px,12px, -24px, -11px);
+  }
+
+  ._cancelled_ico {
+    .mixin-ico(12px,12px, -36px, -11px);
+  }
+
+  ._w1 {
+    width: 1%;
+  }
+
+  &._stats {
+
+    ._ico_up {
+      .mixin-ico(11px, 6px, 0, -35px);
+      vertical-align: 1px;
+    }
+
+    ._ico_down {
+      .mixin-ico(11px, 6px, 0, -41px);
+    }
+
+    tr._title {
+
+      td {
+        font-weight: bold;
+        padding-bottom: 3px;
+      }
+
+      td:first-child{
+        width: 90px;
+      }
+    }
+
+    tr._data {
+
+      td {
+        font-size: 11px;
+        padding-bottom: 16px;
+      }
+    }
+  }
+
+  &._hovers {
+
+  }
+
+  &._info {
+    td {
+      padding: 4px 4px 3px 4px;
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+
+    thead {
+
+      td {
+        font-weight: bold;
+        border-bottom: 1px solid #d6d6d6;
+        padding-bottom: 10px;
+        padding-top: 0;
+      }
+    }
+
+    tbody {
+
+      tr:first-child td {
+        padding-top: 9px;
+      }
+
+      td {
+        font-size: 11px;
+      }
+    }
+
+    tr._selected {
+
+       td._editable {
+         padding-top: 0;
+         padding-bottom: 0;
+
+         input {
+           width: 100%;
+           padding: 0;
+           margin: 0;
+           border:0;
+           outline: 0;
+           height: 100%;
+           background: transparent;
+           padding: 4px 0 2px 0;
+           font-size: 11px;
+           border-bottom: 1px solid transparent;
+         }
+       }
+     }
+  }
+
+
+}

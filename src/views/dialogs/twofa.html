@@ -1,0 +1,84 @@
+
+<div class="_header" ng-show="_title">
+    {{_title}}
+    <div class="_close" ng-click="$close()"></div>
+</div>
+
+<div class="_body" ng-class="{_loading:loading}">
+
+    <btc-inner-loader show="loading" title="Loading..."></btc-inner-loader>
+
+    <div btc-local-notification="error" class="_error"></div>
+
+    <div ng-show=" toShow === 'phone_number_input' ">
+        <form ng-submit="requestCode()">
+            <div class="_form component-form component-html">
+                <div class="_field">
+                    <label>
+                        <span class="_label">Type</span>
+                        <btc-radio options="types" model="type"></btc-radio>
+                    </label>
+                </div>
+                <div class="_field _full">
+                    <label>
+                        <span class="_label">Phone number</span>
+                        <input type="text" ng-model="twoFAParams.phoneNumber" placeholder="Your phone number (international format)" />
+                    </label>
+                </div>
+            </div>
+            <div class="_actions">
+                <div class="_button" ng-click="requestCode()">Attach Phone</div>
+                <div class="_cancel" ng-click="$close()">Cancel</div>
+            </div>
+        </form>
+    </div>
+
+    <div ng-show=" toShow === 'code_input' ">
+        <form class="submitting-form" ng-submit="sendCode()">
+            <div class="_form component-form component-html">
+                <p class="_info">
+                    The code has been sent to confirm {{operationsToConfirm[twoFAParams.todo]}}.<br />
+                    Please type it below.
+                </p>
+                <p class="_new">
+                    Did not receive your code via {{getDefaultType()}}? Click <a ng-click="resendCode($event)">here</a> to resend.
+                    Alternatively click <a ng-click="resendCode($event, true)">here</a> to receive via {{getAlternateType()}}.
+                </p>
+                <div class="_field _full">
+                    <label>
+                        <span class="_label">2FA code</span>
+                        <input type="text" ng-model="twoFAParams.smsCode" />
+                    </label>
+                </div>
+                <div btc-local-notification="newRequestAllowedTimerMessage" class="_error"></div>
+            </div>
+            <div class="_actions">
+                <div class="_button" ng-click="sendCode()">Proceed</div>
+                <div class="_cancel" ng-click="$close()">Cancel</div>
+            </div>
+        </form>
+    </div>
+
+    <div ng-show=" toShow === 'limit_reached' ">
+        <div class="_form component-form component-html">
+            <p class="_info">
+                You reached code request limit.<br />
+                Please contact us via live chat.
+            </p>
+        </div>
+        <div class="_actions">
+            <div class="_button" ng-click="$close()">Ok</div>
+        </div>
+    </div>
+
+    <div ng-show=" toShow === 'result_okay' ">
+        <div class="_form component-form component-html">
+            <p class="_info">
+                {{operationsToConfirm[twoFAParams.todo] | capitalize}} successfully completed
+            </p>
+        </div>
+        <div class="_actions">
+            <div class="_button" ng-click="$close()">Ok</div>
+        </div>
+    </div>
+</div>

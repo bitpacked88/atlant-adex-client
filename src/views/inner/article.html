@@ -1,0 +1,21 @@
+<div class="block-inner-news _article">
+    <div class="_item">
+        <div class="_head">
+            <div class="_l">{{new.ticks | ticksToDateTime}}</div>
+            <div class="_r"><h1>{{new.title}}</h1></div>
+        </div>
+
+        <div class="_body">
+            <!--<div class="_l">{{new.date}}</div>-->
+            <div class="_r component-html">
+                <div ng-bind-html="new.body | trust"></div>
+
+                <div class="_back">
+                    <a ui-sref="root.inner.right-col-logo.news" class="button">
+                        back to news
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

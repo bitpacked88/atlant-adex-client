@@ -1,0 +1,246 @@
+.ngdialog {
+  position: fixed;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 10000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  padding-bottom: 160px;
+  padding-top: 160px;
+
+  &, *, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .ngdialog-overlay {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.4);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadein 0.5s;
+    animation: ngdialog-fadein 0.5s;
+  }
+
+
+  .ngdialog-content {
+    -webkit-backface-visibility: hidden;
+    -webkit-animation: ngdialog-fadein 0.5s;
+    animation: ngdialog-fadein 0.5s;
+
+    background: #fff;
+    color: #444;
+    margin: 0 auto;
+    max-width: 100%;
+    position: relative;
+    width: 450px;
+
+    border: 2px solid #fff;
+    .mixin-css3 > .rounded(10px);
+    .roboto_font_mix();
+
+    ._header {
+      background-color: #12212e;
+      color: #fff;
+      text-transform: uppercase;
+      .mixin-css3 > .border-radius(8px, 0, 0, 8px);
+      padding: 25px 20px;
+      .raleway_font_mix();
+      font-size: 18px;
+      position: relative;
+
+      ._close {
+        position: absolute;
+        cursor: pointer;
+        right: 21px;
+        top: 24px;
+        .mixin-ico(13px, 13px, -50px, 0);
+      }
+    }
+
+    ._body, ._block {
+      padding: 35px 75px;
+
+      ._field {
+        margin-bottom: 25px;
+
+        &._text {
+          ._label {
+            display: block;
+            margin-bottom: 8px;
+          }
+
+          input {
+            width: 100%;
+            padding: 0 10px;
+            margin: 0;
+            border: 1px solid #87c3d2;
+            .mixin-css3>.rounded(2px);
+            font-size: 14px;
+            line-height: 35px;
+            height: 35px;
+            box-sizing: border-box;
+
+
+            &:focus {
+              outline: 0;
+              background-color: #f1f7ef;
+              border-color: #b9d7b1;
+            }
+          }
+        }
+      }
+
+      ._actions {
+
+        ._button {
+          box-sizing: content-box;
+          .mixin-button(@width: 170px);
+        }
+
+        ._cancel {
+          display: inline-block;
+          color: #0f88a5;
+          text-decoration: underline;
+          cursor: pointer;
+          float: right;
+          line-height: 37px;
+        }
+      }
+    }
+
+    ._note {
+      margin-bottom: 30px;
+      .mixin-css3>.rounded(2px);
+      overflow: hidden;
+      color: #000;
+
+      ._title {
+        background-color: #f90;
+        text-transform: uppercase;
+        padding: 0px 20px;
+        font-size: 10px;
+        line-height: 28px;
+        height: 28px;
+      }
+
+      ._cnt {
+        background-color: #f90;
+        padding: 10px 20px;
+
+        ._comment-title {
+          font-size: 14px;
+          margin-bottom: 9px;
+        }
+
+        ._comment {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 17px;
+        }
+
+        ._info {
+          font-size: 11px;
+        }
+      }
+    }
+
+    table._center-info {
+
+        margin-bottom: 20px;
+        font-size: 14px;
+
+        &._bank {
+          margin-bottom: 30px;
+          font-size: 12px;
+
+          td {
+            padding-bottom: 8px;
+          }
+        }
+
+        td {
+          padding-bottom: 11px;
+        }
+
+        ._label {
+          color: #808080;
+          text-align: right;
+          padding-right: 15px;
+          width: 167px;
+
+          &._available {
+            color: #000;
+            padding-top: 14px;
+          }
+        }
+
+        ._value {
+          font-weight: bold;
+
+          &._available {
+            font-size: 16px;
+            padding-top: 14px;
+          }
+        }
+    }
+
+    ._block {
+      background-color: #f6f6f6;
+      border-top: 1px solid #90c6d2;
+      border-bottom: 1px solid #90c6d2;
+    }
+
+    ._footer {
+      background-color: #e5e9f0;
+      .mixin-css3 > .border-radius(0, 8px, 8px, 0);
+      padding: 15px 75px;
+    }
+  }
+
+  &.ngdialog-closing {
+
+    .ngdialog-overlay {
+      -webkit-backface-visibility: hidden;
+      -webkit-animation: ngdialog-fadeout 0.5s;
+      animation: ngdialog-fadeout 0.5s;
+    }
+
+    .ngdialog-content {
+      -webkit-backface-visibility: hidden;
+      -webkit-animation: ngdialog-fadeout 0.5s;
+      animation: ngdialog-fadeout 0.5s;
+    }
+  }
+}
+
+body.ngdialog-open {
+  overflow: hidden;
+}
+
+@-webkit-keyframes ngdialog-fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes ngdialog-fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-webkit-keyframes ngdialog-fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes ngdialog-fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

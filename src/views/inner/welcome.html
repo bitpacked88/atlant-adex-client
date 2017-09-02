@@ -1,0 +1,39 @@
+<div class="block-inner-welcome">
+
+    <div ng-hide="isLoading">
+        <div class="component-table_header _block-header _center">
+            <span class="_txt _centered">Complete your registration</span>
+        </div>
+
+        <div btc-local-notification="alertToShow" class="_error welcome-alert"></div>
+
+        <div ng-show="displayForm">
+            <br />
+            <form class="component-form">
+                <div class="pwd-set">
+                    <div class="_field _text">
+                        <label>
+                            <span class="_label">Enter your password</span>
+                            <input ng-keydown="submitAction($event)" type="password" ng-model="password" placeholder="Your password"/>
+                        </label>
+                    </div>
+                    <div class="_field _text">
+                        <label>
+                            <span class="_label">And once again</span>
+                            <input ng-keydown="submitAction($event)" type="password" ng-model="confirmPassword" placeholder="Repeat password"/>
+                        </label>
+                    </div>
+                    <div class="_field">
+                        <a ng-hide="phoneAttached" ng-click="attachPhone($event)">Attach phone</a>
+                        <span ng-show="phoneAttached" class="_success">Phone has been attached</span>
+                    </div>
+                    <div class="_field">
+                        <div class="button pwd-set-btn" ng-click="savePassword()">{{submitLabel}}</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <btc-inner-loader show="isLoading" title="Loading..."></btc-inner-loader>
+</div>

@@ -1,0 +1,107 @@
+<div class="block-inner-mytrades">
+
+
+    <div class="_cta" ng-show="orders.length == 0 && !processing">
+        <p>Add your orders by clicking the button</p>
+
+        <div class="button" ui-sref="root.desktop.main">New Order</div>
+    </div>
+
+    <div class="_item" ng-repeat="order in orders" ng-class="'_' + order.status">
+        <div class="_header">
+            <div class="_matching">
+                <div class="_ico"></div>
+                <div class="_txt">{{statuses[order.status]}}</div>
+            </div>
+            <div class="_title">
+                <div class="_id">#{{order.id}}</div>
+                <div class="_opened">
+                    Date Opened: {{order.openDate|ticksToDateTime:'lll':true}}
+                </div>
+                <div class="_closed" ng-show="isClosed(order)">
+                    Date Closed: {{order.closeDate|ticksToDateTime:'lll':true}}
+                </div>
+            </div>
+        </div>
+
+        <div class="_order-info">
+            <div class="_actions" ng-hide="isClosed(order)">
+                <span class="_cancel" ng-click="onCancel(order.id)">Cancel order</span>
+            </div>
+            <div class="_data">
+                <table>
+                    <thead>
+                    <tr>
+                        <td>Side</td>
+                        <td>Type</td>
+                        <td>{{order.type == 'TRAILINGSTOP' ? 'TS level' : 'Price ' + baseCurrency.symbol}}</td>
+                        <td>Current Size {{currentPair.derived.symbol}}</td>
+                        <td>Initial Size {{currentPair.derived.symbol}}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{order.side | toBool:'Sell':'Buy'}}</td>
+                        <td>{{order.type}}</td>
+                        <td><span btc-muted value="getRate(order) | currencyToFixed:'EUR'"></span></td>
+                        <td><span btc-muted value="order.leavesQty | currencyToFixed:'OTHER'"></span></td>
+                        <td><span btc-muted value="order.cashOrderQty | currencyToFixed:'OTHER'"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="_matches" ng-show="order.trades.length > 0">
+            <table>
+                <thead>
+                <tr>
+                    <td>Matches:</td>
+                    <td>Trade Time</td>
+                    <td>Trade Volume {{currentPair.derived.symbol}}</td>
+                    <td>Trade Price {{baseCurrency.symbol}}</td>
+                    <td>Fee</td>
+                    <!-- <td>Remaining Price &euro;</td> -->
+                </tr>
+                </thead>
+                <tbody ng-init="limit = 3">
+                <tr ng-repeat="trade in order.trades | limitTo: limit">
+                    <td></td>
+                    <td>{{trade.ticks | ticksToDateTime:"HH:mm:ss":true}}</td>
+                    <td><span btc-muted value="trade.lastQty | currencyToFixed:'OTHER'"></span></td>
+                    <td><span btc-muted value="trade.lastPx | currencyToFixed:'EUR'"></span></td>
+                    <td><span btc-muted value="order.side ? trade.sellerFee : trade.buyerFee | toFixed:4"></span></td>
+                    <!-- <td><span btc-muted value="0 | toFixed:4"></span></td> -->
+                </tr>
+                </tbody>
+            </table>
+
+            <div ng-show="limit < order.trades.length" class="_more" ng-click="limit=order.trades.length">
+                Show more matches
+            </div>
+        </div>
+
+        <div class="_stats">
+            <table>
+                <tr>
+                    <td class="_th">Total spend:</td>
+                    <td class="_data">
+                        <span class="_sign" ng-bind-html="getCurrency(order.side)"></span>
+                        <span btc-muted value="order.total_spend | currencyToFixed:(order.side)?'OTHER':'EUR'"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="_th">Total get:</td>
+                    <td class="_data">
+                        <span class="_sign" ng-bind-html="getCurrency(!order.side)"></span>
+                        <span btc-muted value="order.total_get | currencyToFixed:(order.side)?'EUR':'OTHER'"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="btc-show-more" count="count" limit="limit" offset="offset" is-loading="showLocalLoading"></div>
+
+</div>

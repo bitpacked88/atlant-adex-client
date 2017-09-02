@@ -1,0 +1,56 @@
+.btc-hint {
+  display: inline-block;
+  margin-left: 5px;
+  position: relative;
+  line-height: initial;
+
+  &:hover {
+    ._hint-popup {
+      display: block;
+    }
+  }
+
+  ._hint-ico {
+    cursor: pointer;
+    .mixin-ico(12px, 12px, -11px, -35px);
+  }
+
+  ._hint-popup {
+    font-size: 12px;
+    text-transform: none;
+    display: none;
+    z-index: 90;
+    background-color: #000;
+    color:#fff;
+    padding: 13px 22px 13px 14px;
+    position: absolute;
+    left: 24px;
+    top: -14px;
+    width: 200px;
+    white-space: normal;
+    .mixin-css3>.rounded(2px);
+
+    &:before {
+      position: absolute;
+      content: "";
+      top: 20px;
+      left: -10px;
+      margin-top: -10px;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid #000;
+    }
+  }
+}
+
+// trade popup active button
+._btn{
+  ._hint-ico {
+    margin-bottom: -1px;
+  }
+  &._active ._hint-ico {
+    .mixin-ico(12px, 12px, -23px, -35px);
+  }
+}

@@ -1,0 +1,212 @@
+.block-inner-accounts {
+
+  ._summary {
+    margin-bottom: 62px;
+
+    h2 {
+      .raleway_font_mix();
+      font-size: 20px;
+      font-weight: normal;
+      margin-left: 110px;
+      margin-bottom: 25px;
+    }
+
+    table {
+      width: 100%;
+      margin-bottom: 29px;
+
+      thead {
+
+        td {
+          font-weight: bold;
+          font-size: 12px;
+          padding-bottom: 15px;
+        }
+      }
+
+      tbody {
+
+        td {
+          padding-bottom: 12px;
+
+          &._currency {
+            width: 90px;
+            padding-right: 20px;
+            text-align: right;
+            color: #0f88a5;
+          }
+
+          &._available {
+            font-size: 18px;
+            width: 220px;
+          }
+
+          &._withdraw {
+            width: 220px;
+          }
+
+          &._orders {
+
+          }
+        }
+      }
+    }
+
+    ._btns {
+      margin-left: 110px;
+
+      ._add-usd, ._add-btc {
+        .mixin-button(@width: 284px);
+      }
+
+      ._add-usd {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  ._accounts {
+    margin-bottom: 64px;
+
+    ._block-header {
+      margin-bottom: 28px;
+    }
+
+    ._items {
+
+    }
+
+    ._item {
+      margin-bottom: 35px;
+
+      &:first-child {
+        ._id {
+          border: 0;
+          padding-top: 0;
+        }
+      }
+
+      ._id {
+        margin-left: 110px;
+        font-size: 25px;
+        font-weight: 300;
+        margin-bottom: 16px;
+        border-top: 1px solid #e9f4f7;
+        padding-top: 25px;
+
+        &._safe {
+
+          &:before {
+            margin-left: -31px;
+            margin-right: 20px;
+            content: "";
+            left: 0;
+            top: 0;
+            .mixin-ico(11px, 13px, -63px, 0);
+          }
+        }
+      }
+
+      ._info {
+        margin-left: 110px;
+        color: #808080;
+        font-size: 11px;
+        margin-bottom: 24px;
+      }
+
+      ._balance {
+        width: 270px;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 12px;
+
+        ._row {
+          margin-bottom: 10px;
+
+          ._title, ._value {
+            display: inline-block;
+          }
+
+          ._title {
+            width: 90px;
+            padding-right: 20px;
+            text-align: right;
+            font-weight: bold;
+          }
+
+          ._value {
+            width: 150px;
+            font-weight: bold;
+            font-size: 14px;
+          }
+        }
+      }
+
+      ._actions {
+        width: 130px;
+        display: inline-block;
+        vertical-align: top;
+
+        ._funds-button {
+          width: 160px;
+          height: 32px;
+          line-height: 34px;
+          font-size: 12px;
+          font-weight: bold;
+          text-transform: uppercase;
+          box-sizing: border-box;
+          padding: 0 8px;
+          border-radius: 4px;
+          background-color: #049cff;
+          color: #fff;
+          text-decoration: none;
+          margin-bottom: 5px;
+          cursor: pointer;
+
+          &:hover {
+            border: 2px solid #3e6f9e;
+            line-height: 31px;
+            padding: 0 6px;
+          }
+
+          ._arrow-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 7px;
+            width: 15px;
+            height: 15px;
+            margin-top: -3px;
+          }
+
+          &._add ._arrow-icon {
+            background: url("@{assets}/common/arrow_add_funds.png") center no-repeat;
+          }
+          &._withdraw ._arrow-icon {
+            background: url("@{assets}/common/arrow_withdraw_funds.png") center no-repeat;
+          }
+        }
+      }
+
+      ._balance {
+        margin-bottom: 16px;
+      }
+
+      ._transactions-link-block {
+        margin-top: 6px;
+      }
+      ._transactions-link {
+        color: #0f88a5;
+        font-weight: normal;
+      }
+
+      &:hover {
+        ._balance ._actions {
+          ._transfer {
+            color: #ac8900;
+          }
+        }
+      }
+
+    }
+  }
+}

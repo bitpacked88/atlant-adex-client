@@ -1,0 +1,96 @@
+<div class="block-inner-accounts">
+
+    <div ng-hide="processing">
+        <div class="_accounts" ng-show="wallets != undefined">
+            <div ng-repeat="wallet in wallets.base">
+                <div class="component-table_header _block-header">
+                    <span class="_txt">Accounts ({{ wallet.currency }})<btc-hint text="In this section you can manage your accounts opened in several currencies. These accounts are listed below."></btc-hint></span>
+                </div>
+
+                <div class="_items">
+                    <div class="_item">
+                        <div class="_id _safe">{{wallet.currency}}</div>
+                        <div class="_info">
+                            Status &mdash; <strong>Opened</strong>,
+                            Currency &mdash; <strong>{{wallet.currency}}</strong>
+                        </div>
+
+                        <div class="_balance">
+                            <div class="_row">
+                                <div class="_title">Available:</div>
+                                <div class="_value">
+                                    <span btc-muted value="wallet.availableFunds | currencyToFixed:wallet.currency"></span> {{wallet.currency}}
+                                </div>
+                            </div>
+                            <div class="_row">
+                                <div class="_title">Blocked:</div>
+                                <div class="_value">
+                                    <span btc-muted value="wallet.blockedFunds | currencyToFixed:wallet.currency"></span> {{wallet.currency}}
+                                </div>
+                            </div>
+                            <div class="_row">
+                                <div class="_title"></div>
+                                <div class="_value _transactions-link-block">
+                                    <a class="_transactions-link" ui-sref="root.inner.left-col.transactions({id:(wallet.currency.toLowerCase()+'_'+wallet.currency.toLowerCase())})">
+                                        My transactions
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="_actions">
+                            <div class="_funds-button _add" ng-click="onPayment(wallet, 'in' )">
+                                <div class="_arrow-icon"></div>
+                                Deposit Funds
+                            </div>
+                            <div class="_funds-button _withdraw" ng-click="onPayment(wallet, 'out')">
+                                <div class="_arrow-icon"></div>
+                                Withdraw Funds
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="_item" ng-repeat="derivedWallet in wallet.derived">
+                        <div class="_id _safe">{{derivedWallet.currency}}</div>
+                        <div class="_info">
+                            Status &mdash; <strong>Opened</strong>,
+                            Currency &mdash; <strong>{{derivedWallet.currency}}</strong>
+                        </div>
+
+                        <div class="_balance">
+                            <div class="_row">
+                                <div class="_title">Available:</div>
+                                <div class="_value">
+                                    <span btc-muted value="derivedWallet.availableFunds | currencyToFixed:derivedWallet.currency"></span> {{derivedWallet.currency}}
+                                </div>
+                            </div>
+                            <div class="_row">
+                                <div class="_title">Blocked:</div>
+                                <div class="_value">
+                                    <span btc-muted value="derivedWallet.blockedFunds | currencyToFixed:derivedWallet.currency"></span> {{derivedWallet.currency}}
+                                </div>
+                            </div>
+                            <div class="_row">
+                                <div class="_title"></div>
+                                <div class="_value _transactions-link-block">
+                                    <a class="_transactions-link" ui-sref="root.inner.left-col.transactions({id:(wallet.currency.toLowerCase()+'_'+derivedWallet.currency.toLowerCase())})">
+                                        My transactions
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="_actions">
+                            <div class="_funds-button _add" ng-click="onPayment(derivedWallet, 'in' )">
+                                <div class="_arrow-icon"></div>
+                                Deposit Funds
+                            </div>
+                            <div class="_funds-button _withdraw" ng-click="onPayment(derivedWallet, 'out')">
+                                <div class="_arrow-icon"></div>
+                                Withdraw Funds
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

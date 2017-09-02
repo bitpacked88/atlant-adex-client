@@ -1,0 +1,66 @@
+.block-lite-bottom-bar {
+  position: fixed;
+  background-color: #000;
+  height: 35px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+
+  ._wrap {
+    padding: 0 20px;
+  }
+
+  ._i {
+    font-style: italic;
+  }
+
+  ._u {
+    text-decoration: underline;
+  }
+
+  ._switch {
+    cursor: pointer;
+    float: left;
+    line-height: 35px;
+
+    ._ico {
+      .mixin-ico(17px, 17px, -78px, 0);
+      vertical-align: middle;
+    }
+
+    ._pro {
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
+
+  ._stats {
+    text-align: center;
+    line-height: 35px;
+    
+    ._title {
+      color: #959597;
+      font-size: 0.9em;
+    }
+    
+    ._stat {
+      margin-left: 20px;
+    }
+  }
+
+  ._video {
+    line-height: 35px;
+    float: right;
+    cursor: pointer;
+    ._ico {
+      .mixin-ico(17px, 17px, -95px, 0);
+      vertical-align: middle;
+    }
+
+    ._link {
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
+}

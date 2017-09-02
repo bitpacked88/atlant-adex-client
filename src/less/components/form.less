@@ -1,0 +1,142 @@
+.component-form {
+
+  ._field {
+    white-space: nowrap;
+    margin-bottom: 18px;
+
+    &._nomargin {
+      margin-bottom: 0;
+    }
+
+    &._inline {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    &._full {
+
+      input[type="text"],
+      input[type="password"],
+      input[type="number"],
+      input[type="date"],
+      select,
+      textarea {
+        box-sizing: border-box;
+        width: 100%;
+
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+    }
+
+    ._mult-sign {
+      display: inline-block;
+      width: 10px;
+      text-align: center;
+    }
+
+    .component-switch {
+      margin-left: 15px;
+    }
+
+    ._info {
+      display: block;
+      color: #808080;
+      font-size: 11px;
+      font-style: italic;
+      padding-left: 7px;
+      padding-top: 8px;
+    }
+  }
+
+  label {
+
+    ._label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+
+      &._disabled {
+
+      }
+
+      &._required {
+
+        &:after {
+          content: "*";
+          display: inline-block;
+          margin-left: 0.5em;
+          color: #d95254;
+        }
+      }
+    }
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  select {
+    padding: 0 7px 0 7px;
+    margin: 0;
+    border: 1px solid;
+    .mixin-css3> .rounded(2px);
+    .roboto_font_mix();
+    height: 28px;
+    line-height: 28px;
+    width: 243px;
+    border-color: #87c3d2;
+
+    &:focus {
+      outline: none;
+    }
+
+    &._multiply {
+      width: 37px;
+      padding: 0 2px;
+      text-align: center;
+      font-size: 11px;
+      vertical-align: top;
+    }
+
+    + ._mark {
+      display: inline-block;
+      width: 35px;
+      margin-left: -35px;
+      color: #0f88a5;
+      font-weight: bold;
+      font-size: 11px;
+    }
+
+    &:disabled {
+      border-color: #dfdfdf;
+      background-color: #fff;
+      color: #c7c7c7;
+
+      + ._mark {
+        color: #c7c7c7;
+      }
+    }
+  }
+
+  textarea {
+    padding: 0 35px 0 7px;
+    margin: 0;
+    border: 1px solid;
+    .mixin-css3> .rounded(2px);
+    .roboto_font_mix();
+    width: 243px;
+    border-color: #87c3d2;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      border-color: #dfdfdf;
+      background-color: #fff;
+      color: #c7c7c7;
+    }
+  }
+}

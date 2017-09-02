@@ -1,0 +1,27 @@
+<div class="_header" ng-show="_title">{{_title}}<div class="_close" ng-click="$close()"></div></div>
+<div class="_body">
+    <form novalidate name="signin">
+        <div btc-local-notification="errorMessage" class="_error"></div>
+        <div btc-local-notification="successMessage" class="_success"></div>
+        <div class="_field _text" ng-hide="successMessage">
+            <label>
+                <span class="_label">Email</span>
+                <input type="text" name="email" ng-model="email" placeholder="Your Email here" autofocus />
+            </label>
+        </div>
+        <div class="_field _checkbox" ng-hide="successMessage">
+            <label>
+                <span class="_label">
+                    <btc-checkbox state="agree"></btc-checkbox>
+                    I agree with <a target="_blank" ui-sref="root.inner.terms_of_use">Terms of Service</a>
+                </span>
+            </label>
+        </div>
+        <div class="_actions">
+            <button class="_button" ng-click="register()">{{submitLabel}}</button>
+            <div class="_cancel" ng-click="$dismiss()">Cancel</div>
+        </div>
+    </form>
+</div>
+
+<div class="_footer"> Already have an account? Please, <a href="#" ng-click="onSignIn($event)">Sign In</a></div>

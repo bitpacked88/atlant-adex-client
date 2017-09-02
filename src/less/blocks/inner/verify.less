@@ -1,0 +1,88 @@
+.block-inner-verify {
+  ._text {
+    margin-bottom: 68px;
+  }
+
+  ._form {
+    margin-bottom: 15px;
+
+    ._block-header {
+      margin-bottom: 28px;
+    }
+
+    ._field {
+      ._label {
+        font-size: 12px;
+      }
+
+      input, select {
+        height: 35px;
+        line-height: 35px;
+        box-sizing: border-box;
+      }
+    }
+
+    ._first, ._last, ._city, ._id-num {
+
+      input {
+        width: 275px;
+      }
+    }
+
+    ._country {
+
+      select {
+        width: 275px;
+      }
+    }
+
+    ._birth, ._postal {
+
+      input {
+        width: 140px;
+      }
+    }
+
+    ._id-issue, ._id-exp {
+
+      input {
+        width: 207px;
+      }
+    }
+
+    ._first, ._last, ._country, ._city,
+    ._id-num, ._id-issue {
+      margin-right: 20px;
+    }
+  }
+
+  ._attaches {
+    margin-bottom: 14px;
+  }
+
+  ._documents {
+    margin-bottom: 30px;
+  }
+
+  ._document {
+    display: inline-block;
+    margin: 10px 20px 0 0;
+    text-align: center;
+  }
+
+  ._document-preview {
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+
+    img {
+      max-height: 150px;
+    }
+  }
+
+  ._submit {
+    .mixin-button(@width: 240px, @display: block);
+    margin-bottom: 20px;
+  }
+}

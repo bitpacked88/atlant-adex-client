@@ -1,0 +1,46 @@
+<div class="block-inner-api">
+
+    <table class="component-table _info _api-table" ng-if="!isFixMode()">
+        <thead>
+            <tr>
+                <td class="_key">HTTP API key</td>
+                <td class="_type">Type</td>
+                <td class="_action">Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="key in keys | filter:{type:filter}" ng-show="keys.length">
+                <td>{{key.key}}</td>
+                <td>{{key.type.toUpperCase()}}</td>
+                <td>
+                    <span class="_button _edit" ng-click="onEditTypeClick(key)">Edit</span>
+                    &nbsp;
+                    <span class="_button" ng-click="onItemDeleteClick(key)">Delete</span>
+                </td>
+            </tr>
+            <tr ng-hide="keys.length">
+                <td colspan="3">No HTTP API keys</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="component-table _info _api-table" ng-if="isFixMode()">
+        <thead>
+        <tr>
+            <td class="_key">FIX API login</td>
+            <td class="_action">Actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="fkey in fix_keys" ng-show="fix_keys.length">
+            <td>{{fkey}}</td>
+            <td>
+                <span class="_button" ng-click="onItemDeleteClick(fkey)">Delete</span>
+            </td>
+        </tr>
+        <tr ng-hide="fix_keys.length">
+            <td colspan="3">No FIX API logins</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

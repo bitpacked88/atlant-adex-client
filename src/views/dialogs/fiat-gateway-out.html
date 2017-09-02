@@ -1,0 +1,308 @@
+<style>
+    .cf:before,
+    .cf:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+
+    .cf:after {
+        clear: both;
+    }
+
+    .left-clmn {
+        font-weight: bold;
+        padding-right: 10px;
+        text-align: right;
+        width: 130px;
+    }
+
+    .methods {
+        margin-bottom: 30px;
+        margin-top: 15px;
+    }
+
+    .methods .el {
+        height: 60px;
+        width: 130px;
+
+        float: left;
+
+        cursor: pointer;
+
+        border: 2px solid #bbb;
+        border-radius: 5px;
+
+        margin-bottom: 10px;
+
+        margin-right: 7px;
+        margin-left: 7px;
+    }
+
+    .methods .el.selected {
+        border-color: #0f88a5;
+    }
+
+    .expireDate {
+        float: left;
+        width: 15%;
+    }
+
+    .expireDelimiter {
+        float: left;
+        width: 5%;
+        text-align: center;
+        padding-top: 9px;
+        font-size: 20px;
+    }
+
+    .slideText {
+        font-weight: bold;
+        font-size: 14px;
+        color: #0f88a5;
+        cursor: pointer;
+    }
+
+    [data-method='SEPA'] {
+        background: url(../../assets/payment_icons/sepa.png) no-repeat;
+    }
+
+    [data-method='MoneyPolo'] {
+        background: url(../../assets/payment_icons/moneyPolo.png) no-repeat;
+    }
+
+    [data-method='Credit Card'] {
+        background: url(../../assets/payment_icons/credit.png) no-repeat;
+    }
+
+    [data-method='OKPay'] {
+        background: url(../../assets/payment_icons/okpay.png) no-repeat;
+    }
+
+    [data-method='PerfectMoney'] {
+        background: url(../../assets/payment_icons/perfect.png) no-repeat;
+    }
+
+    [data-method='AdvCash'] {
+        background: url(../../assets/payment_icons/advCash.png) no-repeat;
+    }
+
+    [data-method='SWIFT'] {
+        background: url(../../assets/payment_icons/swift.png) no-repeat;
+    }
+
+    [data-method='SOFORT'] {
+        background: url(../../assets/payment_icons/sofort.png) no-repeat;
+    }
+
+    [data-method='Fiat Code'] {
+        background: url(../../assets/payment_icons/codes.png) no-repeat;
+        background-color: #fff;
+        background-size: contain;
+    }
+</style>
+
+
+<div class="_header" ng-show="_title">Withdraw funds
+    <div class="_close" ng-click="$close()"></div>
+</div>
+<div class="_body">
+    <table class="_center-info">
+        <tbody>
+        <tr>
+            <td class="_label">Available:</td>
+            <td class="_value">
+                <span btc-muted value="wallet.availableFunds|currencyToFixed:wallet.currency"></span> {{wallet.currency}}
+            </td>
+        </tr>
+        <tr class="_last">
+            <td class="_label">Blocked:</td>
+            <td class="_value">
+                <span btc-muted value="wallet.blockedFunds|currencyToFixed:wallet.currency"></span> {{wallet.currency}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="_block component-form">
+    <div btc-local-notification="errorMessage" class="_error"></div>
+    <div>
+        <div class="component-table_header">
+            <span class="_txt _gray">Select payment method</span>
+        </div>
+        <div class="_field _full">
+            <label>
+                <div class="methods cf">
+                    <div class="el" ng-class="(method.name == current_method)? 'selected':''" data-method="{{ method.name }}" ng-repeat="method in methods" ng-click="setCurrentMethod(method.name)"></div>
+                </div>
+                <div style="margin-top: 10px;" ng-if="current_method == 'OKPay'">
+                    <div class="component-table_header">
+                        <span class="_txt _gray">Payment details</span>
+                    </div>
+                    <label>
+                        <span class="_label">OKPay Wallet ID</span>
+                        <input type="text" name="OKAccount" ng-model="out.account" placeholder="Your OKPay Wallet ID">
+                    </label>
+                    <br/><br/>
+                    <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+                </div>
+
+                <div style="margin-top: 10px;" ng-if="current_method == 'PerfectMoney'">
+                    <div class="component-table_header">
+                        <span class="_txt _gray">Payment details</span>
+                    </div>
+                    <label>
+                        <span class="_label">Perfect Money Wallet ID</span>
+                        <input type="text" name="PMAccount" ng-model="out.account" placeholder="Your Perfect Money Wallet ID">
+                    </label>
+                    <br/><br/>
+                    <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+                </div>
+                <div style="margin-top: 10px;" ng-if="current_method == 'MoneyPolo'">
+                    <div class="component-table_header">
+                        <span class="_txt _gray">Payment details</span>
+                    </div>
+                    <label>
+                        <span class="_label">MoneyPolo Account</span>
+                        <input type="text" name="MPAccount" ng-model="out.account" placeholder="Your MoneyPolo Account">
+                    </label>
+                    <br/><br/>
+                    <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+                </div>
+                <div style="margin-top: 10px;" ng-if="current_method == 'AdvCash'">
+                    <div class="component-table_header">
+                        <span class="_txt _gray">Payment details</span>
+                    </div>
+                    <label>
+                        <span class="_label">Email or AdvCash Wallet ID</span>
+                        <input type="text" name="ADVAccount" ng-model="out.account" placeholder="Your Email or AdvCash Wallet ID">
+                    </label>
+                    <br/><br/>
+                    <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+                </div>
+                <div style="margin-top: 10px;" ng-if="current_method == 'SEPA'">
+                    <div class="component-table_header">
+                        <span class="_txt _gray">Payment details</span>
+                    </div>
+                    <label>
+                        <span class="_label">IBAN</span>
+                        <input type="text" ng-model="sepaWireOut.IBAN" placeholder="International Bank Account Number">
+                    </label>
+                    <br/><br/>
+                    <label>
+                        <span class="_label">Beneficiary Name</span>
+                        <input type="text" ng-model="sepaWireOut.BeneficiaryName" placeholder="Beneficiary name">
+                    </label>
+                    <br/><br/>
+                    <label>
+                        <span class="_label">Bank SWIFT</span>
+                        <input type="text" ng-model="sepaWireOut.BankSWIFT" placeholder="SWIFT code">
+                    </label>
+                    <br/><br/>
+                    <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+                </div>
+                <div style="margin-top: 10px;" ng-if="current_method == 'Fiat Code'">
+                    <div class="component-table_header">
+                        <span class="_txt _gray">Payment details</span>
+                    </div>
+                    <label>
+                        <span>
+                            <btc-checkbox state="fcode.extraFieldsVisible"></btc-checkbox> Extra options
+                        </span>
+                    <span ng-if="fcode.extraFieldsVisible">
+                        <br><br>
+                        <span class="_label">Lock to Email</span>
+                        <input type="text" ng-model="fcode.data.email" placeholder="Enter Email">
+                        <br><br>
+                        <span class="_label">Date of Expiry</span>
+                        <div class="expireDate" btc-dropdown list="days" placeholder="Day" selected="fcode.data.expired.day"></div>
+                        <div class="expireDelimiter">/</div>
+                        <div class="expireDate" btc-dropdown list="months" placeholder="Month" selected="fcode.data.expired.month"></div>
+                        <div class="expireDelimiter">/</div>
+                        <div class="expireDate" btc-dropdown list="years" placeholder="Year" selected="fcode.data.expired.year"></div>
+                        <br><br>
+                        <div ng-click="fcode.resetExpirationDate()" class="_label" style="cursor: pointer" ng-click>Reset expiration date</div>
+                    </span>
+                    </label>
+                </div>
+                <div style="margin-top: 10px;" ng-if="current_method == 'Credit Card'">
+                    <div class="component-table_header">
+                        <span class="_txt _gray">Payment details</span>
+                    </div>
+                    <label>
+                        <span class="_label">Card Number</span>
+                        <input type="text" ng-model="cardOut.CardNumber" btc-credit-mask placeholder="Your credit card number">
+                    </label>
+                    <br/><br/>
+                    <label>
+                        <span class="_label">Date of Expiry</span>
+                        <div class="expireDate" btc-dropdown list="months" placeholder="Month" selected="cardOut.Month"></div>
+                        <div class="expireDelimiter">/</div>
+                        <div class="expireDate" btc-dropdown list="years" placeholder="Year" selected="cardOut.Year"></div>
+                    </label>
+                    <br><br><br>
+                    <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+                </div>
+                <div style="margin-top: 10px;" ng-if="current_method == 'SWIFT'">
+                    <div class="component-table_header">
+                        <span class="_txt _gray">Payment details</span>
+                    </div>
+                    <label>
+                        <span class="_label">IBAN</span>
+                        <input type="text" ng-model="swiftOut.IBAN" placeholder="International Bank Account Number">
+                    </label>
+                    <br/><br/>
+                    <label>
+                        <span class="_label">Beneficiary Name</span>
+                        <input type="text" ng-model="swiftOut.BeneficiaryName" placeholder="Beneficiary name">
+                    </label>
+                    <br/><br/>
+                    <label>
+                        <span class="_label">Beneficiary Address</span>
+                        <input type="text" ng-model="swiftOut.BeneficiaryAddress" placeholder="Beneficiary address">
+                    </label>
+                    <br/><br/>
+                    <label>
+                        <span class="_label">Bank SWIFT</span>
+                        <input type="text" ng-model="swiftOut.BankSWIFT" placeholder="SWIFT code">
+                    </label>
+                    <br/><br/>
+                    <label>
+                        <span class="_label">Bank Name</span>
+                        <input type="text" ng-model="swiftOut.BankName" placeholder="Bank name">
+                    </label>
+                    <br/><br/>
+                    <label>
+                        <span class="_label">Bank Address</span>
+                        <input type="text" ng-model="swiftOut.BankAddress" placeholder="Bank address">
+                    </label>
+                    <br/><br/>
+                    <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+                </div>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="_body">
+    <div class="_form component-form">
+        <div class="_field _full">
+            <label>
+                <span class="_label">Amount</span>
+                <input id="withdrawalEuro" type="text" ng-model="amount" btc-ngmodel-float ng-change="onChangeAmount('withdrawalEuro', 'withdrawalEuroToGet')" placeholder="Withdrawal amount" />
+                <span class="_mark">{{wallet.currency}}</span>
+            </label>
+            <br/><br/>
+            <label ng-if="current_method != 'Fiat Code'">
+                <label class="_label">To be withdrawn</label>
+                <input id="withdrawalEuroToGet" type="text" name="Amount" ng-model="moneyPolo.toget" ng-change="onChangeToGet('withdrawalEuroToGet', 'withdrawalEuro')" placeholder="To be withdrawn">
+                <span class="_mark">{{wallet.currency}}</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="_actions">
+        <div class="_button" ng-click="submit()">WITHDRAW FUNDS</div>
+        <div class="_cancel" ng-click="$close()">Cancel</div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="block-inner-news">
+
+    <div ng-hide="processing">
+        <div class="_item" ng-repeat="new in news">
+            <div class="_head">
+                <div class="_l">{{new.ticks | ticksToDateTime}}</div>
+                <div class="_r"><h1>{{new.title}}</h1></div>
+            </div>
+
+            <div class="_body">
+                <!--<div class="_l">{{new.date}}</div>-->
+                <div class="_r component-html">
+                    <div class="_preview" ng-bind-html="new.body | trust"></div>
+                    <div class="_actions">
+                        <a class="button" ui-sref="root.inner.right-col-logo.new({id: new.id})">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btc-show-more" count="count" limit="limit" offset="offset"></div>
+</div>

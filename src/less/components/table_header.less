@@ -1,0 +1,39 @@
+.component-table_header {
+  position: relative;
+  margin-bottom:12px;
+  .mixin-css3>.opacity(0.99);
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    background-color: #eaf6f7;
+    border-bottom: 1px solid #0f88a5;
+    height: 50%;
+    width: 100%;
+    z-index: 5;
+  }
+
+  ._txt {
+    display: inline-block;
+    padding-right: 6px;
+    position: relative;
+    z-index: 10;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #fff;
+    color: #0f88a5;
+
+    &._gray {
+      background-color: #f6f6f6;
+    }
+  }
+
+  .component-switch {
+    position: absolute;
+    right: 0;
+    z-index: 10;
+    padding-left: 8px;
+  }
+}

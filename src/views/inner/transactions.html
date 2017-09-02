@@ -1,0 +1,85 @@
+<div class="block-inner-transactions">
+
+    <div class="_cta" ng-if="transactions.length == 0">
+        <p>Click this button to initiate your first transaction</p>
+        <div class="button" ui-sref="root.inner.right-col.accounts">Proceed</div>
+    </div>
+
+    <div ng-if="transactions.length > 0">
+        <table class="component-table _info" ng-if="currencyType == 'fiat'">
+            <thead>
+            <tr>
+                <td class="_date">Date</td>
+                <td>Currency</td>
+                <td>Amount</td>
+                <td>Method</td>
+                <td>Description</td>
+                <td class="_status">Status</td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="transaction in transactions">
+                <td>{{transaction.ticks | ticksToDateTime:"L hh:mm":true}}</td>
+                <td class="_text-center">{{transaction.currency}}</td>
+                <td class="_text-center">
+                    <span ng-class="{'_amount-out':transaction.type == 'out','_amount-in':transaction.type == 'in'}">
+                        <span btc-muted value="transaction.amount | currencyToFixed:transaction.currency">0000000</span>
+                    </span>
+                </td>
+                <td class="_text-center">{{transaction.method}}</td>
+                <td class="_text-center">{{transaction.description}}</td>
+                <td>
+                    <span class="_ico" ng-class="'_status' + transaction.status + '_ico'"></span>
+                    {{statuses[transaction.status]}}
+                </td>
+                <td style="text-align: right;">
+                    <a href="#" ng-show="transaction.status==0" ng-click="cancel(transaction, 'fiat')">Cancel</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="component-table _info" ng-if="currencyType == 'crypto'">
+            <thead>
+            <tr>
+                <td class="_date">Date</td>
+                <td>Currency</td>
+                <td>Hash</td>
+                <td>Amount</td>
+                <td>Address</td>
+                <td>Confirmations</td>
+                <td class="_status">Status</td>
+                <td>Cancel</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="transaction in transactions">
+                <td>{{transaction.ticks | ticksToDateTime:"L hh:mm":true}}</td>
+                <td class="_text-center">{{transaction.currency}}</td>
+                <td class="_text-center">
+                    <a ng-if="transaction.hash" href="{{transaction.link}}" target="_blank">
+                        View
+                    </a>
+                </td>
+                <td class="_text-center">
+                    <span ng-class="{'_amount-out':transaction.type == 'out','_amount-in':transaction.type == 'in'}">
+                        <span btc-muted value="transaction.amount | toFixed:4">0000000</span>
+                    </span>
+                </td>
+                <td class="_text-center">{{transaction.address}}</td>
+                <td class="_text-center">{{ getConfirmation(transaction.confirmations, transaction.currency)}}</td>
+                <td>
+                    <span class="_ico" ng-class="'_status' + transaction.status + '_ico'"></span>
+                    {{statuses[transaction.status]}}
+                </td>
+                <td class="_text-center">
+                    <a href="#" class="_ico-close" ng-show="transaction.status==0"
+                       ng-click="cancel(transaction, 'crypto')"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="btc-show-more" count="count" limit="limit" offset="offset" is-loading="showLocalLoading"></div>
+</div>

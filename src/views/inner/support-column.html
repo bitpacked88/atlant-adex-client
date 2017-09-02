@@ -1,0 +1,11 @@
+<div class="block-inner-support-left">
+
+    <div class="left-column-button _send-question" ng-click="onSendQuestionClick()">Send Question</div>
+
+    <ul class="component-left-column-menu">
+        <li ui-sref-active="_active"><a ui-sref="root.inner.left-col.support({status: null})">All</a></li>
+        <li ui-sref-active="_active"><a ui-sref="root.inner.left-col.support({status: 'waitForUser'})">Wait for user</a></li>
+        <li ui-sref-active="_active"><a ui-sref="root.inner.left-col.support({status: 'waitForSupport'})">Wait for support</a></li>
+        <li ui-sref-active="_active"><a ui-sref="root.inner.left-col.support({status: 'closed'})">Closed tickets</a></li>
+    </ul>
+</div>

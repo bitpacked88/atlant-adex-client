@@ -1,0 +1,65 @@
+.block-inner-api {
+
+  ._api-table {
+
+    thead {
+      font-size: 12px;
+
+      ._key {
+        width: 50%;
+      }
+
+      ._type {
+        width: 40%;
+      }
+
+      ._action {
+        width: 10%;
+      }
+    }
+
+    tbody {
+
+      tr {
+        
+        td {
+          padding-top: 9px;
+          padding-bottom: 9px;
+
+          &:first-child {
+            width: 40%;
+          }
+
+          ._button {
+            cursor: pointer;
+            text-decoration: underline;
+            color: #bfbfbf;
+
+            &._edit {
+              color: #0f88a5;
+            }
+          }
+        }
+
+        &:hover {
+
+          td {
+            background-color: #f4fafb;
+
+            ._delete {
+              color: #d95254;
+            }
+
+            ._show {
+              display: inline;
+            }
+
+            &._shown ._show {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

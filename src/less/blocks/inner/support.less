@@ -1,0 +1,269 @@
+.block-inner-support {
+  //background: url("@{assets}/tmp/support01.png") no-repeat -406px -186px;
+
+  ._cta {
+    text-align: center;
+
+    p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      display: inline-block;
+    }
+  }
+
+  ._item {
+    padding-bottom: 36px;
+    border-bottom: 1px solid #e9f4f7;
+    margin-bottom: 30px;
+
+    &._closed {
+      ._heading ._status {
+        background-color: #c2f7b3;
+        color: #1b2a15;
+      }
+    }
+    &._waiting-user {
+      ._heading ._status {
+        background-color: #ff9b9d;
+        color: #230e0f;
+      }
+    }
+    &._waiting-support {
+      ._heading ._status {
+        background-color: #f7d929;
+        color: #191711;
+      }
+    }
+
+    &:last-child {
+      margin: 0;
+      border: 0;
+      padding: 0;
+    }
+
+    ._heading {
+      margin-bottom: 23px;
+
+      ._status {
+        padding: 5px 8px;
+        font-size: 10px;
+        font-weight: bold;
+        float: left;
+        text-transform: uppercase;
+        .mixin-css3>.rounded(3px);
+        margin: 10px 0 0 0;
+        line-height: 1.3;
+      }
+
+      ._subject {
+        .raleway_font_mix();
+        font-size: 35px;
+        color: #353535;
+        margin-left: 110px;
+      }
+    }
+
+
+
+    ._date-block {
+      margin-bottom: 35px;
+
+      ._id-block {
+        float: left;
+        margin-top: 3px;
+        font-weight: bold;
+
+        ._id {
+          text-transform: uppercase;
+          font-size: 10px;
+          margin-bottom: 12px;
+        }
+
+        ._stat {
+          font-size: 12px;
+        }
+      }
+
+      ._date {
+        margin-left: 110px;
+        font-size: 12px;
+
+        ._mark {
+          margin-left: 6px;
+          display: inline-block;
+        }
+
+        ._opened {
+          margin-bottom: 13px;
+
+          ._waiting {
+            display: inline-block;
+            margin-left: 24px;
+
+            ._mark {
+              color: #0f88a5;
+            }
+          }
+
+          ._mark {
+            color: #0fb4c1;
+
+          }
+        }
+
+        ._closed {
+
+          ._mark {
+            display: inline-block;
+            color: #0f88a5;
+          }
+        }
+
+        ._waiting {
+
+          ._mark {
+            color: #0f88a5;
+          }
+        }
+      }
+    }
+
+    ._chat {
+      margin-bottom: 44px;
+
+      ._message {
+        line-height: 1.4;
+        margin-bottom: 13px;
+
+        &._support {
+          ._name {
+            color: #0f88a5;
+          }
+
+          ._txt {
+            color: #0b6075;
+          }
+        }
+
+        ._name {
+          float: left;
+          width: 90px;
+          text-align: right;
+          font-size: 12px;
+          font-weight: bold;
+
+          ._n {
+            font-size: 10px;
+            color: #808080;
+            font-weight: normal;
+          }
+        }
+
+        ._txt {
+          margin-left: 110px;
+        }
+
+        ._screenshots {
+          margin-left: 110px;
+          overflow: auto;
+          margin-top: 20px;
+          font-size: 11px;
+
+          ._screenshot {
+            margin-right: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+
+            img {
+              display: block;
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    ._form {
+
+      ._message {
+
+        ._label {
+          float: left;
+          width: 90px;
+          text-align: right;
+          font-size: 12px;
+          font-weight: bold;
+        }
+
+        ._textarea {
+          margin-left: 110px;
+          margin-bottom: 23px;
+
+          textarea {
+            border: 1px solid #87c3d2;
+            .mixin-css3>.rounded(2px);
+            width: 100%;
+            height: 79px;
+          }
+        }
+      }
+
+      ._attach {
+        margin-left: 110px;
+        margin-bottom: 39px;
+        font-size: 12px;
+
+        ._label {
+          font-weight: bold;
+          margin-bottom: 14px;
+        }
+
+        ._files {
+          font-size: 11px;
+
+          ._file {
+            margin-left: -17px;
+            margin-bottom: 12px;
+
+            &._upload {
+              ._ico {
+                background-position: -48px -13px;
+              }
+            }
+
+            ._ico {
+              .mixin-ico(12px, 12px, -60px, -13px);
+              margin-right: 5px;
+            }
+
+            ._filename {
+              font-weight: bold;
+            }
+
+            ._file-action {
+              display: inline-block;
+              margin-left: 6px;
+              cursor: pointer;
+              color: #bfbfbf;
+            }
+          }
+        }
+
+        ._add {
+          color: #0f88a5;
+          font-size: 12px;
+          font-weight: bold;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    ._action {
+      margin-left: 110px;
+    }
+  }
+}

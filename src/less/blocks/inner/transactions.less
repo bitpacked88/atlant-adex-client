@@ -1,0 +1,122 @@
+.block-inner-transactions {
+
+  ._cta {
+    text-align: center;
+
+    p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      display: inline-block;
+    }
+  }
+
+
+  ._text-center {
+    text-align: center;
+  }
+
+  ._text-right {
+    text-align: right;
+  }
+
+  .component-table {
+
+    thead {
+
+      tr {
+
+        td {
+          font-size: 12px;
+          text-align: center;
+
+          &._date {
+            width: 100px;
+          }
+
+          &._status {
+            width: 90px;
+          }
+        }
+      }
+    }
+
+    tbody {
+
+      tr {
+
+        td {
+          font-size: 12px;
+          padding: 9px 0;
+
+          a {
+            color: #0f88a5;
+          }
+
+          ._amount-in{
+            font-weight: bold;
+            &>span:before {
+              content: '+';
+            }
+            color: rgb(116, 175, 99);
+            ._muted{
+              color: rgba(116, 175, 99, 0.5);
+            }
+          }
+          ._amount-out{
+            font-weight: bold;
+            &>span:before {
+              content: '-';
+            }
+            color: rgb(240, 87, 112);
+            ._muted{
+              color: rgba(240, 87, 112, 0.5);
+            }
+          }
+
+          ._ico {
+            background: url("@{assets}/common/icons.png") no-repeat;
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin-right: 5px;
+          }
+
+          ._status0_ico {
+            background-position: 0 -11px;
+          }
+          ._status1_ico {
+            background-position: -12px -11px;
+          }
+          ._status2_ico {
+            background-position: -24px -11px;
+          }
+          ._status3_ico {
+            background-position: -36px -11px;
+          }
+          ._status4_ico {
+            background-position: -63px -25px;
+            width: 14px;
+            height: 14px;
+          }
+          ._status5_ico {
+            background-position: -48px -13px;
+            width: 12px;
+            height: 12px;
+          }
+
+          ._ico-close {
+            background: url("@{assets}/common/icons.png") no-repeat;
+            background-position: -80px -26px;
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+          }
+
+        }
+      }
+    }
+  }
+}

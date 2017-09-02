@@ -1,0 +1,19 @@
+<div class="_header" ng-show="_title">{{_title}}<div class="_close" ng-click="$close()"></div></div>
+<div class="_body">
+    <div class="_form component-form">
+
+
+
+        <div class="_field _text _title"><label><span class="_label">Title</span><input type="text" ng-model="title"/></label></div>
+        <div class="_field _department"><label><span class="_label">Department</span><btc-departments-radio model="department"></btc-departments-radio></label></div>
+        <div class="_field _text _message"><label><span class="_label">Message</span><textarea ng-model="text"></textarea></label></div>
+
+        <div btc-attach title="Attach file" files="files"></div>
+
+        <div class="_actions">
+            <div class="_button" ng-click="submit()">Send Ticket</div>
+            <div class="_cancel" ng-click="$close()">Cancel</div>
+        </div>
+    </div>
+</div>
+<div class="_footer">To get help faster — you can read our <a ng-click="$close()" ui-sref="root.inner.left-col.faq">FAQ</a></div>

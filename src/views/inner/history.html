@@ -1,0 +1,22 @@
+<div class="block-inner-history">
+
+    <table class="component-table _info">
+        <thead>
+            <tr>
+                <td>Date and time</td>
+                <td>IP address</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-class="{_current: action.currentSession}" ng-repeat="action in actions.data track by $index">
+                <td>{{action.dateTime|ticksToDateTime:'L hh:mm'}}</td>
+                <td>{{action.ip}} <span class="_label" ng-if="action.currentSession">Current session</span></td>
+                <td>{{actions.list[action.action]}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="btc-show-more" count="actions.count" limit="actions.limit" offset="actions.offset" is-loading="showLocalLoading"></div>
+
+</div>

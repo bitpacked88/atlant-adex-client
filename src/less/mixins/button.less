@@ -1,0 +1,40 @@
+.mixin-button(@width: 190px, @height: 37px, @font-size: 12px, @background_variant: 1, @display: inline-block) {
+  @bg: #049cff;
+  @color: #ffffff;
+  @hover_border_width: 2px;
+  @hover_border_color: #3e6f9e;
+  @background_x: -14px;
+  @background_y: -73px;
+
+  display: @display;
+  width: @width;
+  height: @height;
+  border: 0;
+  line-height: @height + 1;
+  font-size: @font-size;
+  .raleway_font_mix();
+  .mixin-css3>.rounded();
+  text-transform: uppercase;
+  font-weight: bold;
+  color: @color !important;
+  text-align: center;
+  cursor: pointer;
+  background-color: @bg;
+
+  &:hover {
+    background-position: (@background_x - @hover_border_width) (@background_y - @hover_border_width);
+    text-decoration: none;
+    border: @hover_border_width solid @hover_border_color;
+    width: @width - 2 * @hover_border_width;
+    height: @height - 2 * @hover_border_width;
+    line-height: @height - 2 * @hover_border_width + 1;
+  }
+}
+
+.button {
+  .mixin-button();
+}
+
+.left-column-button {
+  .mixin-button(@width: 170px);
+}

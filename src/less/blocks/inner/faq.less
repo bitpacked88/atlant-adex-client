@@ -1,0 +1,95 @@
+.block-inner-faq  {
+  
+  ._block {
+    margin-bottom: 55px;
+    
+    ._block-header {
+      margin-bottom: 31px;
+    }
+    
+    ._tabs {
+      
+      ._tab {
+        border-bottom: 1px solid #e9f4f7;
+        padding-bottom: 3px;
+        margin-bottom: 14px;
+
+        
+        ._head {
+          .raleway_font_mix();
+          font-size: 20px;
+          margin-bottom: 12px;
+          position: relative;
+          cursor: pointer;
+
+          &._opened {
+
+            ._ico {
+              //right: 5px;
+              .mixin-css3>.rotation(@deg:135deg);
+
+              &:before {
+                height: 14px;
+                top: 0;
+                //top: -6px;
+              }
+
+              &:after {
+                left: 0;
+                width: 14px;
+                //left: -6px;
+              }
+            }
+          }
+
+          ._ico {
+            position: absolute;
+            top: 9px;
+            right: 8px;
+            .mixin-css3>.transition();
+            width: 14px;
+            height: 14px;
+
+            &:before {
+              top: 2px;
+              left: 6px;
+              content: "";
+              width: 2px;
+              height: 10px;
+              background-color: #24899b;
+              display: block;
+              position: absolute;
+            }
+
+            &:after {
+              top: 6px;
+              left: 2px;
+              content: "";
+              width: 10px;
+              height: 2px;
+              background-color: #24899b;
+              display: block;
+              position: absolute;
+            }
+          }
+
+          &._opened {
+
+          }
+        }
+
+        ._txt {
+          display: none;
+
+          ._wrap {
+            margin-bottom: 23px;
+          }
+
+          &._show {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

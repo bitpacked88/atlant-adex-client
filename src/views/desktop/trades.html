@@ -1,0 +1,23 @@
+<div class="block-desktop-trades" btc-graph-resize="bottom">
+    <div class="component-table_header"><span class="_txt">Trades</span></div>
+    <table class="component-table _info">
+        <thead>
+        <tr>
+            <td class="_time-col">Time</td>
+            <td class="_price-col">Price <span class="_thick">{{baseCurrency.symbol}}</span></td>
+            <td class="_amount-col">Volume <span class="_thick">{{defaultCurrency.symbol}}</span></td>
+        </tr>
+        </thead>
+    </table>
+    <div class="_scrollable" btc-resizable btc-nicescroll>
+        <table class="component-table _info _hovers">
+            <tbody>
+                <tr ng-repeat="trade in trades.data track by $index">
+                    <td class="_time-col">{{trade.ticks | ticksToDateTime:"HH:mm:ss":true}}</td>
+                    <td class="_price-col"><span btc-muted value="(baseCurrency.name == 'BTC') ? (trade.rate | toFixed:8) : (trade.rate | toFixed:2)" ng-class="{'_green': !trade.side, '_red': trade.side}"></span></td>
+                    <td class="_amount-col"><span btc-muted value="trade.amount | toFixed:2"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

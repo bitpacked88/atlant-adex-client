@@ -1,0 +1,128 @@
+<div class="block-desktop-trade_popup noselect" ng-class="{_processing: processing}" ng-hide="hide" btc-trade-popup-draggable>
+
+    <btc-inner-loader show="true" title="Processing..."></btc-inner-loader>
+    
+    <div class="_wrapper">
+
+
+        <div class="_header">
+            <div class="_btns">
+                <div class="_btn" ng-class="{_active: tab.type==activeTab}" ng-click="selectTab(tab.type)"
+                     ng-repeat="tab in tabs">
+                    {{tab.title}} <btc-hint text="{{tab.hint}}"></btc-hint>
+                </div>
+            </div>
+            <div class="_close" ng-click="hide = true"></div>
+        </div>
+
+
+        <div class="_body">
+            <div btc-local-notification="errorMessage" class="_error"></div>
+            <div class="_buy-sell">
+                <div class="_buy">
+                    <div class="component-table_header"><span class="_txt">Buy {{currentPair.derived.name}}</span></div>
+                    <div class="component-form">
+                        <div class="_field" ng-class="{'_click': activeTab == 'market'}" ng-show="checkFieldVisibility('amount')">
+                            <label>
+                                <span class="_label">{{base_cur_amount ? 'To spend' : 'Amount to buy'}}</span>
+                                <input type="text" ng-model="buy.amount" />
+                                <span class="_mark" ng-click="togglePopup('buy')">{{getAmountCurrency()}}</span>
+                                <div class="_popup" ng-show="popup.buy" ng-click="selectCurrency()">
+                                    {{getPopupCurrency()}}
+                                </div>
+                            </label>
+                            <span class="_mult-sign">x</span><input type="text" class="_multiply" btc-ngmodel-tofixed btc-ngmodel-float ng-model="buy.multiply" />
+                        </div>
+                        <div class="_field" ng-show="checkFieldVisibility('rate')">
+                            <label><span class="_label">Price</span><input type="text" ng-model="buy.rate" /><span class="_mark">{{currentPair.base.name}}</span></label>
+                        </div>
+                        <div class="_leverage"><span class="_title">Leverage</span>
+                            <span btc-slider value="buy.multiply" prefix="x_"></span>
+                        </div>
+                        <div class="_field" ng-show="checkFieldVisibility('stoploss')">
+                            <label>
+                                <span class="_label" ng-class="{'_disabled': !buy.stoplossSwitch}">STOP LOSS price<btc-hint text="Stop Loss (SL) is used to limit your losses. SL order is triggered when market price hits the stop price, which results in placing a market sell order with filled amount of the primary order (market or limit). You may turn SL on and specify the stop price below."></btc-hint></span>
+                                <input type="text" value="0" ng-model="buy.stoploss" ng-disabled="!buy.stoplossSwitch" />
+                                <span class="_mark">{{baseCurrency.name}}</span>
+                            </label>
+                            <btc-switch state="buy.stoplossSwitch"></btc-switch>
+                        </div>
+                        <div class="_field" ng-show="checkFieldVisibility('takeprofit')">
+                            <label>
+                                <span class="_label" ng-class="{'_disabled': !buy.takeprofitSwitch}">TAKE PROFIT price<btc-hint text="Take Profit (TP) is used to lock in your profits. TP order is triggered when market price hits the take price, which results in placing a market sell order with filled amount of the primary order (market or limit). You may turn TP on and specify the take price below."></btc-hint></span>
+                                <input type="text" value="0" ng-model="buy.takeprofit" ng-disabled="!buy.takeprofitSwitch" />
+                                <span class="_mark">{{baseCurrency.name}}</span>
+                            </label>
+                            <btc-switch state="buy.takeprofitSwitch"></btc-switch>
+                        </div>
+                        <div class="_field" ng-show="checkFieldVisibility('trailingstop')">
+                            <label>
+                                <span class="_label" ng-class="{'_disabled': !buy.trailingstopSwitch}">TRAILING STOP level<btc-hint text="Trailing Stop (TS) is used to automatically adjust your SL/TP as a position goes in your favor. TS order is triggered when market price goes against your position by the level amount (set in EUR), which results in placing a market sell order with filled amount of the primary order (market or limit). You may turn TS on and specify its level below."></btc-hint></span>
+                                <input type="text" value="0" ng-model="buy.trailingstop" ng-disabled="!buy.trailingstopSwitch" />
+                                <span class="_mark">{{baseCurrency.name}}</span>
+                            </label>
+                            <btc-switch state="buy.trailingstopSwitch"></btc-switch>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="_sell">
+                    <div class="component-table_header"><span class="_txt">Sell {{currentPair.derived.name}}</span></div>
+                    <div class="component-form">
+                        <div class="_field" ng-class="{'_click': activeTab == 'market'}" ng-show="checkFieldVisibility('amount')">
+                            <label>
+                                <span class="_label">{{base_cur_amount ? 'To get' : 'Amount to sell'}}</span>
+                                <input type="text" ng-model="sell.amount" />
+                                <span class="_mark" ng-click="togglePopup('sell')">{{getAmountCurrency()}}</span>
+                                <div class="_popup" ng-show="popup.sell" ng-click="selectCurrency()">
+                                    {{getPopupCurrency()}}
+                                </div>
+                            </label>
+                            <span class="_mult-sign">x</span><input type="text" ng-model="sell.multiply" btc-ngmodel-tofixed class="_multiply" />
+                        </div>
+                        <div class="_field" ng-show="checkFieldVisibility('rate')">
+                            <label><span class="_label">Price</span><input type="text" ng-model="sell.rate" /><span class="_mark">{{baseCurrency.name}}</span></label></div>
+                        <div class="_leverage"><span class="_title">Leverage</span>
+                            <span btc-slider value="sell.multiply" min="1" prefix="x_"></span>
+                        </div>
+                        <div class="_field" ng-show="checkFieldVisibility('stoploss')">
+                            <label>
+                                <span class="_label" ng-class="{'_disabled': !sell.stoplossSwitch}">STOP LOSS price<btc-hint text="Stop Loss (SL) is used to limit your losses. SL order is triggered when market price hits the stop price, which results in placing a market buy order with filled amount of the primary order (market or limit). You may turn SL on and specify the stop price below."></btc-hint></span>
+                                <input type="text" value="0" ng-model="sell.stoploss" ng-disabled="!sell.stoplossSwitch" />
+                                <span class="_mark">{{baseCurrency.name}}</span>
+                            </label>
+                            <btc-switch state="sell.stoplossSwitch"></btc-switch>
+                        </div>
+                        <div class="_field" ng-show="checkFieldVisibility('takeprofit')">
+                            <label>
+                                <span class="_label" ng-class="{'_disabled': !sell.takeprofitSwitch}">TAKE PROFIT price<btc-hint text="Take Profit (TP) is used to lock in your profits. TP order is triggered when market price hits the take price, which results in placing a market buy order with filled amount of the primary order (market or limit). You may turn TP on and specify the take price below."></btc-hint></span>
+                                <input type="text" value="0" ng-model="sell.takeprofit" ng-disabled="!sell.takeprofitSwitch" />
+                                <span class="_mark">{{baseCurrency.name}}</span>
+                            </label>
+                            <btc-switch state="sell.takeprofitSwitch"></btc-switch>
+                        </div>
+                        <div class="_field" ng-show="checkFieldVisibility('trailingstop')">
+                            <label>
+                                <span class="_label" ng-class="{'_disabled': !sell.trailingstopSwitch}">TRAILING STOP level<btc-hint text="Trailing Stop (TS) is used to automatically adjust your SL/TP as a position goes in your favor. TS order is triggered when market price goes against your position by the level amount (set in EUR), which results in placing a market buy order with filled amount of the primary order (market or limit). You may turn TS on and specify its level below."></btc-hint></span>
+                                <input type="text" value="0" ng-model="sell.trailingstop" ng-disabled="!sell.trailingstopSwitch" />
+                                <span class="_mark">{{baseCurrency.name}}</span>
+                            </label>
+                            <btc-switch state="sell.trailingstopSwitch"></btc-switch>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="_footer">
+            <div class="_actions">
+                <div class="_buy"><div class="button" ng-click="onTrade(false)">Buy {{currentPair.derived.name}}</div><div class="_reset" ng-click="onReset('buy')">Reset</div></div>
+                <div class="_sell"><div class="button" ng-click="onTrade(true)">Sell {{currentPair.derived.name}}</div><div class="_reset" ng-click="onReset('sell')">Reset</div></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

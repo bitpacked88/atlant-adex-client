@@ -1,0 +1,27 @@
+<div class="_header" ng-show="_title">{{_title}}
+    <div class="_close" ng-click="$close()"></div>
+</div>
+
+<div class="_body">
+    <form ng-submit="confirm()">
+        <div class="_form component-form component-html">
+            <div btc-local-notification="codeInputLocalAlert" class="_error"></div>
+            <p class="_info">The code has been sent to you by {{send_type}} for withdrawal confirmation.</p>
+            <p><a ng-if="newRequestAllowed" ng-click="resendCode()">Resend code</a></p>
+            <p>{{params.amount}} {{params.currency}}</p>
+            <br />
+            <div class="_field _full">
+                <label>
+                    <span class="_label">Code</span>
+                    <input type="text" ng-model="code" />
+                </label>
+            </div>
+            <div btc-local-notification="newRequestAllowedTimerMessage" class="_error"></div>
+            <div btc-local-notification="error" class="_error"></div>
+        </div>
+        <div class="_actions">
+            <div class="_button" ng-click="confirm()">{{submitLabel}}</div>
+            <div class="_cancel" ng-click="$close()">Cancel</div>
+        </div>
+    </form>
+</div>

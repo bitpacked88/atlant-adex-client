@@ -1,0 +1,107 @@
+.mixin-animation(@duration: 3s, @timing-function: ease-in) {
+  animation-duration: @duration;
+  animation-timing-function: @timing-function;
+}
+
+._text_green {
+  animation-name: fadein-green-color-black;
+  .mixin-animation();
+}
+
+._text_red {
+  animation-name: fadein-red-color-black;
+  .mixin-animation();
+}
+
+._text_yellow {
+  animation-name: fadein-yellow-color-black;
+  .mixin-animation();
+}
+
+.theme-white {
+  ._text_green-fade-in {
+    animation-name: fadein-green-color-black;
+    .mixin-animation();
+  }
+
+  ._text_red-fade-in {
+    animation-name: fadein-red-color-black;
+    .mixin-animation();
+  }
+
+  ._text_yellow-fade-in {
+    animation-name: fadein-yellow-color-black;
+    .mixin-animation();
+  }
+}
+
+.theme-black {
+  ._text_green-fade-in {
+    animation-name: fadein-green-color;
+    .mixin-animation();
+  }
+
+  ._text_red-fade-in {
+    animation-name: fadein-red-color;
+    .mixin-animation();
+  }
+
+  ._text_yellow-fade-in {
+    animation-name: fadein-yellow-color;
+    .mixin-animation();
+  }
+}
+
+@keyframes fadein-green-color {
+  from {
+    color: #74af63;
+  }
+  to {
+    color: #fff;
+  }
+}
+
+@keyframes fadein-red-color {
+  from {
+    color: #d95254;
+  }
+  to {
+    color: #fff;
+  }
+}
+
+@keyframes fadein-yellow-color {
+  from {
+    color: #e9ba00;
+  }
+  to {
+    color: #fff;
+  }
+}
+
+@keyframes fadein-green-color-black {
+  from {
+    color: #74af63;
+  }
+  to {
+    color: #000;
+  }
+}
+
+@keyframes fadein-red-color-black {
+  from {
+    color: #d95254;
+  }
+  to {
+    color: #000;
+  }
+}
+
+@keyframes fadein-yellow-color-black {
+  from {
+    color: #e9ba00;
+  }
+  to {
+    color: #000;
+  }
+}

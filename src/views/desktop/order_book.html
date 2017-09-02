@@ -1,0 +1,57 @@
+<div class="block-desktop-order_book" btc-graph-resize="order_book">
+    <div class="_headers">
+        <div class="_buy">
+            <div class="component-table_header"><span class="_txt">Buy</span></div>
+            <table class="component-table _info">
+                <thead>
+                <tr>
+                    <td class="_col">Sum</td>
+                    <td class="_col">Size <span class="_thick">{{currentPair.symbol}}</span></td>
+                    <td class="_col">Bid <span class="_thick">{{basePair.symbol}}</span></td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="_sell">
+            <div class="component-table_header"><span class="_txt">Sell</span></div>
+
+            <table class="component-table _info">
+                <thead>
+                <tr>
+                    <td class="_col">Ask <span class="_thick">{{basePair.symbol}}</span></td>
+                    <td class="_col">Size <span class="_thick">{{currentPair.symbol}}</span></td>
+                    <td class="_col">Sum</td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="_content" btc-nicescroll btc-resizable="63">
+        <div class="_buy">
+            <table class="component-table _info _hovers">
+                <tbody>
+                <tr ng-repeat="bid in orderBook.bids track by $index"
+                    ng-class="{'_text_yellow-fade-in': bid.is_new, '_cursor': orderBook.is_logged}"
+                    ng-click="openTradeModal(bid)">
+                    <td><span btc-muted value="bid.sum | toFixed:2"></span></td>
+                    <td><span btc-muted value="bid.amount | toFixed:2"></span></td>
+                    <td class="_bold _green"><span btc-muted value="(baseCurrency.name == 'BTC') ? (bid.rate | toFixed:8) : (bid.rate | toFixed:2)"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="_sell">
+            <table class="component-table _info _hovers">
+                <tbody>
+                <tr ng-repeat="ask in orderBook.asks track by $index"
+                    ng-class="{'_text_yellow-fade-in': ask.is_new, '_cursor': orderBook.is_logged}"
+                    ng-click="openTradeModal(ask)">
+                    <td class="_bold _red"><span btc-muted value="(baseCurrency.name == 'BTC') ? (ask.rate | toFixed:8) : (ask.rate | toFixed:2)"></span></td>
+                    <td><span btc-muted value="ask.amount | toFixed:2"></span></td>
+                    <td><span btc-muted value="ask.sum | toFixed:2"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

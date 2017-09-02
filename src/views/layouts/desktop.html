@@ -1,0 +1,25 @@
+<div class="block-desktop-content">
+    <div class="_left-col">
+        <div class="_wrapper">
+            <div ui-view="pair_change"></div>
+            <div ui-view="actions"></div>
+            <div ui-view="personal_stats"></div>
+            <div ui-view="general_stats"></div>
+            <div ui-view="desktop_settings"></div>
+        </div>
+    </div>
+    <div class="_right-col">
+        <div class="_wrapper">
+            <div ui-view="order_book"></div>
+            <div ui-view="trades"></div>
+        </div>
+    </div>
+    <div class="_center-col">
+        <div class="_wrapper">
+            <div ui-view="graph"></div>
+            <div ui-view="orders"></div>
+        </div>
+    </div>
+</div>
+
+<div ui-view="trade_popup"></div>

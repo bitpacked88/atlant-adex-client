@@ -1,0 +1,70 @@
+.component-attach {
+  margin-bottom: 39px;
+  font-size: 12px;
+
+  ._label {
+    font-weight: bold;
+    margin-bottom: 14px;
+
+    &._required {
+
+      &:after {
+        content: "*";
+        display: inline-block;
+        margin-left: 0.5em;
+        color: #d95254;
+      }
+    }
+  }
+
+  ._files {
+    font-size: 11px;
+
+    ._file {
+      margin-left: -17px;
+      margin-bottom: 12px;
+
+      &._upload {
+        ._ico {
+          background-position: -48px -13px;
+        }
+      }
+
+      ._ico {
+        .mixin-ico(12px, 12px, -60px, -13px);
+        margin-right: 5px;
+      }
+
+      ._filename {
+        font-weight: bold;
+      }
+
+      ._file-action {
+        display: inline-block;
+        margin-left: 6px;
+        cursor: pointer;
+        color: #bfbfbf;
+      }
+
+      ._progress {
+        color: #bfbfbf; 
+      }
+
+      ._uploaded {
+        color: #bfbfbf;
+      }
+
+      ._error {
+        color: #d95254;
+      }
+    }
+  }
+
+  ._add {
+    color: #0f88a5;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

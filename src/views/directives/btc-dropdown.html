@@ -1,0 +1,8 @@
+<div class="component-dropdown" ng-class="{ show: listVisible }">
+    <div class="dropdown-display" ng-click="toggle();" ng-class="{ clicked: listVisible }">
+        <span>{{display}}</span>
+    </div>
+    <div class="dropdown-list">
+        <div ng-repeat="(id, item) in list" ng-click="select(id)" ng-class="{ selected: isSelected(id) }">{{item}}</div>
+    </div>
+</div>

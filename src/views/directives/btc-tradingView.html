@@ -1,0 +1,25 @@
+<div class="btc-trading-view">
+
+
+    <div class="_graph" id="high-stocks-target"></div>
+    <div class="_ranges">
+
+
+        Period:
+        <span
+            ng-repeat="(periodKey, period) in allTheRanges"
+            ng-class="{'_range':true,'_selected':periodKey == thePeriod}"
+            ng-click="updateGraphStat(periodKey, true)"
+        >{{period.name}}</span>
+
+
+        <span class="_right-floated">
+            <span ng-class="{'_range':true,'_selected':graphType == 'candlestick'}" ng-click="showGraphType('candlestick')">Candle</span>
+            <span ng-class="{'_range':true,'_selected':graphType == 'line'       }" ng-click="showGraphType('line')">Linear</span>
+        </span>
+
+
+    </div>
+
+
+</div>

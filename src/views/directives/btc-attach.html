@@ -1,0 +1,13 @@
+<div class="component-attach">
+    <div class="_label">{{title}}</div>
+    <div class="_files">
+        <div class="_file" ng-class="{_upload: file._uploading}" ng-repeat="file in files">
+            <span class="_ico"></span><span class="_filename">{{file.name}}</span>&nbsp;
+            <span class="_file-action" ng-click="onRemove(file)" ng-hide="file._uploaded || file._uploading">Remove file</span>
+            <span class="_progress" ng-show="file._uploading">{{file._progress}}%</span>
+            <span class="_uploaded" ng-show="file._uploaded">Uploaded</span>
+            <span class="_error" ng-show="file._error">Error</span>
+        </div>
+    </div>
+    <div class="_add" ng-file-select ng-model="selected">Attach file</div>
+</div>

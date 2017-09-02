@@ -1,0 +1,15 @@
+<div class="_header" ng-show="_title">{{_title}}<div class="_close" ng-click="$close()"></div></div>
+<div class="_body">
+    <div btc-local-notification="alertToShow" class="_error"></div>
+    <form novalidate name="forgot" ng-submit="onSubmit()">
+        <div class="_field _text" ng-hide="submitAction == 'check_email'">
+        	<label>
+        		<span class="_label">Email</span><input type="text" ng-model="email" placeholder="Email" />
+        	</label>
+        </div>
+        <div class="_actions">
+        	<button class="_button">{{submitLabel}}</button>
+        </div>
+    </form>
+</div>
+<div class="_footer">Do not have an account? <a href="#" ng-click="onRegister($event)">Create an account</a></div>

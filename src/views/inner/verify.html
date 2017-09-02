@@ -1,0 +1,53 @@
+<div class="block-inner-verify">
+
+    <div class="_text component-html">
+        <p>We should verify your account according to <strong><a ui-sref="root.inner.aml_kyc">Know Your Customer</a></strong> requirements.</p>
+        <h2>To verify your account please submit</h2>
+        <p>1) A valid government issued ID, acceptable high quality images of documents are:</p>
+        <ul>
+            <li>International passport (double page)</li>
+            <li>Driver's license (both sides)</li>
+        </ul>
+        
+        <p>2) A proof of residency, acceptable scanned images of paper documents are:</p>
+        <ul>
+            <li>bank statement</li>
+            <li>certificate of residency issued by a government or a local government authority</li>
+        </ul>
+
+
+        <p>You can also submit other documents to serve as proof of residency such as: government-issued documents, judicial authority-issued documents, documents issued by a public agency / authority, utility service company, or similar regulated service providing companies.</p>
+        <h2>Notice</h2>
+        <p>To avoid delays when verifying your account, make sure that your submitted documents are:</p>
+        <ul>
+            <li>NOT ELECTRONIC bills/statements, online screenshots, mobile phone bills or credit card statements</li>
+            <li>Resolution should be more than 800x600 px</li>
+            <li>Allowed file extensions: JPEG, PNG, PDF</li>
+            <li>Maximum file size: 5 MB</li>
+        </ul>
+
+    </div>
+
+    <div btc-local-notification="alertToShow" class="_success"></div>
+
+    <div btc-local-notification="identityDocsProvided" class="_success"></div>
+    <div btc-local-notification="residenceDocsProvided" class="_success"></div>
+
+    <div class="_attaches" ng-hide="isPersonalDataExist">
+        <div class="_submit" ng-click="personalData()" ng-hide="hideIdentity" ng-model="proofOfIdentity">
+            {{identityButtonLabel}}
+        </div>
+        <div class="_submit" ng-click="personalData()" ng-hide="hideResidence" ng-model="proofOfResidence">
+            {{residenceButtonLabel}}
+        </div>
+    </div>
+
+    <div class="_attaches" ng-show="isPersonalDataExist">
+        <div class="_submit" ng-file-select ng-hide="hideIdentity" ng-model="proofOfIdentity">
+            {{identityButtonLabel}}
+        </div>
+        <div class="_submit" ng-file-select ng-hide="hideResidence" ng-model="proofOfResidence">
+            {{residenceButtonLabel}}
+        </div>
+    </div>
+</div>

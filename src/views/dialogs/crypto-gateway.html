@@ -1,0 +1,90 @@
+<div class="_crypto-gateway">
+    <div class="_header" ng-show="_title">{{_title}}
+        <div class="_close" ng-click="$close()"></div>
+    </div>
+    <div class="_body">
+        <table class="_center-info">
+            <tbody>
+            <tr>
+                <td class="_label">Available:</td>
+                <td class="_value">
+                    <span btc-muted value="((wallet.availableFunds >= 0.0001) ? (wallet.availableFunds - 0.0001) : 0)|toFixed:4"></span> {{wallet.currency}}
+                </td>
+            </tr>
+            <tr class="_last">
+                <td class="_label">Blocked:</td>
+                <td class="_value">
+                    <span btc-muted value="wallet.blockedFunds|toFixed:4"></span> {{wallet.currency}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="_block component-form">
+
+        <div ng-show="way == 'in'">
+            <div class="_field _full _address">
+                <label>
+                    <span class="_label">{{wallet.currency}} address</span>
+                    <input ng-model="address" type="text" ng-disabled="true"/>
+                    <div class="_copy-button" data-clipboard-text="{{address}}" id="copy-button"></div>
+                </label>
+                <div class="_hint" ng-show="successMessage">{{successMessage}}</div>
+            </div>
+            <div class="_field _full">
+                <label>
+                    <div class="_qr" btc-qr value="address"></div>
+                </label>
+            </div>
+            <div class="_actions _center" ng-show="show_button">
+                <a ng-click="getNewAdress(true)">Get new {{wallet.currency}} address</a>
+            </div>
+        </div>
+
+        <div ng-show="way == 'out'">
+            <div class="component-table_header">
+                <span class="_txt _gray">Withdrawal details</span>
+            </div>
+            <div class="_field _full" ng-class="{_error: addressError}">
+                <label>
+                    <span class="_label">Your {{wallet.currency}} address</span>
+                    <input ng-model="address" type="text" placeholder="Enter address"/>
+                    <div class="_message">{{addressError}}</div>
+                </label>
+            </div>
+            <div class="_field _full" ng-class="{_error: amountError}">
+                <label>
+                    <span class="_label">Amount</span>
+                    <input type="text" ng-model="amount" ng-change="onChangeAmount()"
+                           btc-ngmodel-float placeholder="Withdrawal amount"/>
+                    <span class="_mark">{{wallet.currency}}</span>
+                    <div class="_message">{{amountError}}</div>
+                </label>
+            </div>
+            <div class="_field _full _last" ng-class="{_error: amountError}">
+                <label>
+                    <span class="_label">To be withdrawn</span>
+                    <input type="text" ng-model="to_get" ng-change="onChangeToGet()"
+                           btc-ngmodel-float placeholder="To be withdrawn"/>
+                    <span class="_mark">{{wallet.currency}}</span>
+                    <div class="_message">{{amountError}}</div>
+                </label>
+                <p class="_hint">Fee: {{wallet.fee}} {{wallet.currency}}</p>
+            </div>
+            <div btc-local-notification="errorMessage" class="_error _clean"></div>
+        </div>
+    </div>
+
+    <div class="_body">
+
+        <div class="_actions" ng-show="way == 'out'">
+            <div class="_button" ng-click="submit()">{{getSubmitLabel()}}</div>
+            <div class="_cancel" ng-click="$close()">Cancel</div>
+        </div>
+
+        <div class="_actions _center" ng-show="way == 'in'">
+            <div class="_button" ng-click="submit()">Close</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="block-inner-content">
+    <div class="block-inner-change">
+
+        <div class="_fields">
+            <ul class="_tabs">
+                <li ng-repeat="(id, tab) in tabs" class="_col">
+                    <a ng-click="change(id)" href="#" ng-class="{_active: id==currentTab}">
+                        {{tab}} {{currentPair.derived.name}}
+                    </a>
+                    <div ng-class="classes.availableFunds" ng-show="isLogged && id == 'buy'">
+                        {{currentPair.base.symbol}} <span btc-muted value="availableFunds | currencyToFixed:'EUR'"></span>
+                    </div>
+                    <div ng-class="classes.derivedAvailableFunds" ng-show="isLogged && id == 'sell'">
+                        {{currentPair.symbol}} <span btc-muted value="derivedAvailableFunds | currencyToFixed:'OTHER'"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="_fields _inputs">
+            <div class="component-form">
+                <div class="_col _margin">
+                    <div class="_field">
+                        <label>
+                            <span class="_label">{{side ? 'Sell' : 'Spend'}}</span>
+                            <input type="text" ng-model="amount" ng-change="calculate()"/>
+                            <span class="_symbol" ng-bind="currency"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="_col">
+                    <div class="_field _disabled">
+                        <label>
+                            <span class="_label">To get</span>
+                            <span class="_tilda">&#126;</span>
+                            <input type="text" ng-model="receive" disabled="disabled"/>
+                            <span class="_symbol">{{receiveCurrency}}</span>
+                        </label>
+                    </div>
+                    <div class="_hint" ng-show="isLogged">
+                        Fee {{fee}}%
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="_fields _actions">
+            <div class="button" ng-click="onTrade()" ng-show="isLogged">
+                {{getSubmitButtonLabel()}}
+            </div>
+            <div class="_auth" ng-hide="isLogged">
+                <p>Please <a href="#" ng-click="onSigninClick($event)">Sign in</a> to swap tokens</p>
+
+                <p>Don't have an account? <a href="#" ng-click="onSignupClick($event)">Sign up</a> and swap tokens instantly</p>
+            </div>
+        </div>
+
+        <div class="_messages">
+            <div btc-local-notification="errorMessage" class="_error"></div>
+            <div btc-local-notification="successMessage" class="_success"></div>
+        </div>
+    </div>
+</div>

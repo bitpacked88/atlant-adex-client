@@ -1,0 +1,18 @@
+<div class="_header" ng-show="_title">{{_title}}<div class="_close" ng-click="$close()"></div></div>
+<div class="_body">
+    <div class="_form component-form">
+        <div class="_field _text _short">
+                <span class="_label">FIX API login</span>
+                <input type="text" ng-model="login" placeholder="Your login">
+        </div>
+        <div class="_field _text">
+            <span class="_label">FIX API password</span>
+            <input type="password" ng-model="password" placeholder="Your password">
+        </div>
+    </div>
+
+    <div class="_actions">
+        <div class="_button" ng-click="onGenerate()">{{_confirmButtonText}}</div>
+        <div class="_cancel" ng-click="$close()">Cancel</div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+.component-switch {
+  display: inline-block;
+  cursor: pointer;
+  width: 26px;
+  height: 12px;
+
+  .btn(){
+    content: "On";
+    display: inline-block;
+    vertical-align: top;
+    text-transform: uppercase;
+    background-color: #0f88a5;
+    font-weight: bold;
+    color: #fff;
+    font-size: 8px;
+    height: 12px;
+    line-height: 12px;
+    width: 20px;
+    text-align: center;
+    .mixin-css3>.rounded(2px);
+  }
+
+  .bg(){
+    content: "";
+    display: inline-block;
+    vertical-align: 0px;
+    background-color: #0fb4c1;
+    height: 10px;
+    width: 6px;
+    .mixin-css3>.border-radius(2px, 2px, 0, 0);
+  }
+
+  &:after {
+    .bg();
+  }
+
+  &:before {
+    .btn();
+  }
+
+  &._off {
+    &:after {
+      margin-left: -26px;
+      background-color: #eaf6f7;
+      .mixin-css3>.border-radius(0, 0, 2px, 2px);
+    }
+
+    &:before {
+      margin-left: 6px;
+      content: "Off";
+      background-color: #0fb4c1;
+    }
+  }
+}

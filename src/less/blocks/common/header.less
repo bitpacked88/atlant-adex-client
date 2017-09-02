@@ -1,0 +1,88 @@
+@header_height: 60px;
+
+.block-common-header {
+  width: 100%;
+  height: @header_height;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  //background: rgba(0,0,0,0.4);
+
+  //.block-desktop-layout & {
+  //}
+
+  ._wrapper {
+    z-index: 15;
+    position: absolute;
+    width: 100%;
+    height: @header_height;
+  }
+
+  ._logo {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 20px;
+    margin-top: 13px;
+    width: 150px;
+    height: 32px;
+    background: url("@{assets}/common/logo.svg") no-repeat;
+
+    @media @retina {
+      background:  url("@{assets}/common/logo.svg") no-repeat;
+      background-size: 150px 32px;
+    }
+
+  }
+
+  ._login {
+    position: absolute;
+    right: 20px;
+    top: 17px;
+    color: #fff;
+
+    ._sign {
+      display: inline-block;
+
+      ._ico {
+        .mixin-ico(9px, 11px, 0, 0);
+        margin-right: 10px;
+      }
+
+      a {
+        font-size: 14px;
+        color: #fff;
+      }
+
+      ._or {
+        font-style: italic;
+        font-weight: 200;
+        display: inline-block;
+        margin: 0 15px 0 19px;
+      }
+    }
+
+    ._button {
+      display: inline-block;
+      .mixin-button(@width: 110px, @height: 27px, @background_variant: 1);
+    }
+  }
+
+  ._logout {
+    position: absolute;
+    right: 20px;
+    top: 23px;
+
+    a {
+      color:#fff !important;
+      font-size: 14px;
+
+      ._ico {
+        margin-left: 10px;
+        .mixin-ico(11px, 11px, -9px, 0);
+      }
+    }
+  }
+}

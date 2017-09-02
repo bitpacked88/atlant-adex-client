@@ -1,0 +1,81 @@
+.block-desktop-alerts {
+  z-index: 1500;
+  position: fixed;
+  right: 10px;
+  top: 70px;
+  //display: none;
+
+  ._alert {
+    position: relative;
+    margin-bottom: 10px;
+    .mixin-css3>.rounded(2px);
+    font-size: 14px;
+    padding: 12px 45px 12px 9px;
+    opacity: 0.95;
+    width: 446px;
+    z-index: 1500;
+
+    .mixin-css3>.transition(0.5s, linear, opacity);
+
+    &.ng-leave
+ {
+      //opacity:0;
+    }
+
+
+    &.ng-leave-active {
+      opacity:0;
+    }
+
+    ._close {
+      position: absolute;
+      width: 36px;
+      height: 100%;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        margin-left: -4px;
+        top: 50%;
+        margin-top: -4px;
+        .mixin-ico(9px,9px, -42px, 0);
+      }
+    }
+
+    &._error {
+      background-color: #db5456;
+
+      ._close {
+        background-color: #db5456;
+      }
+    }
+
+    &._warning {
+      background-color: #f90;
+
+      ._close {
+        background-color: #f90;
+      }
+    }
+
+    &._success {
+      background-color: #dff2bf;
+
+      ._close {
+        background-color: #dff2bf;
+      }
+    }
+
+    &._message {
+      background-color: #049cff;
+
+      ._close {
+        background-color: #049cff;
+      }
+    }
+  }
+}

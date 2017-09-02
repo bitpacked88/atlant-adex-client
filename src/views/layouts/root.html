@@ -1,0 +1,68 @@
+<div class="block-common-header" ng-controller="commonHeaderCtrl">
+    <div class="_wrapper">
+        <a class="_logo" href="/"></a>
+
+        <ul class="block-common-menu">
+            <a href="https://atlant.io">
+                <li>
+                    <span>Home</span>
+                </li>
+            </a>
+            <a ui-sref="root.desktop.main">
+                <li ui-sref-active="_active">
+                    <span>Token Trading</span>
+                </li>
+            </a>
+            <a ui-sref="root.inner.change">
+                <li ui-sref-active="_active">
+                    <span>Token Swap</span>
+                </li>
+            </a>
+            <a ng-show="auth" ui-sref="root.inner.right-col.accounts">
+                <li ui-sref-active="_active">
+                    <span>My Assets</span>
+                </li>
+            </a>
+            <a ng-show="auth" ui-sref="root.inner.left-col.mytrades">
+                <li ui-sref-active="_active">
+                    <span>Trade History</span>
+                </li>
+            </a>
+            <span class="_not-a" ng-show="auth" href="#">
+                <li ui-sref-active="_active" class="_drop">
+                    <span>Personal</span>
+                    <ul>
+                        <li><a ui-sref="root.inner.right-col.settings"><div>Settings</div></a></li>
+                        <li><a ui-sref="root.inner.right-col.history"><div>Security Log</div></a></li>
+                    </ul>
+                </li>
+            </span>
+            <a ui-sref="root.inner.right-col-logo.fees">
+                <li ui-sref-active="_active">
+                    <span>Fees</span>
+                </li>
+            </a>
+            <a ui-sref="root.inner.faq">
+                <li ui-sref-active="_active">
+                    <span>FAQ</span>
+                </li>
+            </a>
+
+            <!--a ui-sref="root.inner.affiliate">
+                <li ng-show="auth" ui-sref-active="_active">
+                    <span>Affiliate Program</span>
+                </li>
+            </a-->
+        </ul>
+        <div class="_login" ng-hide="auth">
+            <div class="_sign"><a href="#" ng-click="onSigninClick($event)"><span class="_ico"></span>Sign in</a><span class="_or">or</span></div>
+            <div class="_button" ng-click="onRegisterClick()">Sign up</div>
+        </div>
+
+        <div class="_logout" ng-show="auth">
+            <a href="#" ng-click="onLogoutClick($event)">Sign out<span class="_ico"></span></a>
+        </div>
+    </div>
+</div>
+
+<div ui-view></div>

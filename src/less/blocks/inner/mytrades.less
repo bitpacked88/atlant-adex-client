@@ -1,0 +1,203 @@
+.block-inner-mytrades {
+  //background: url("/images/tmp/mytrades.png") no-repeat -405px -200px;
+  //padding-bottom: 150px;
+
+  ._cta {
+    text-align: center;
+
+    p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      display: inline-block;
+    }
+  }
+
+
+  ._item {
+    padding-bottom: 27px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #e9f4f7;
+
+    &:last-child {
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    &._partiallyFilled {
+      ._header ._matching ._ico { background-position: 0 -69px;}
+    }
+
+    &._accepted {
+      ._header ._matching ._ico { background-position: -32px -69px;}
+    }
+
+    &._filled { 
+      ._header ._matching ._ico { background-position: -64px -69px;}
+    }
+
+    &._cancelled {
+      ._header ._matching ._ico { background-position: -96px -69px;}
+    }
+
+    ._header {
+      overflow: hidden;
+      margin-bottom: 27px;
+
+      ._matching {
+        float: left;
+
+        ._ico {
+          margin-bottom: 16px;
+          .mixin-ico(32px, 32px, 0, -69px)
+        }
+
+        ._txt{
+          font-size: 11px;
+          line-height: 1.3;
+        }
+      }
+
+      ._title {
+        margin-left: 111px;
+
+        ._id {
+          .roboto_font_mix();
+          font-size: 25px;
+          color: #353535;
+          margin-bottom: 26px;
+        }
+
+        ._opened, ._closed {
+          color: #808080;
+          font-size: 11px;
+        }
+
+        ._opened {
+          margin-bottom: 14px;
+        }
+      }
+    }
+
+    ._order-info {
+      overflow: hidden;
+      margin-bottom: 28px;
+
+      ._actions {
+        float: left;
+        font-size: 12px;
+        line-height: 1.9;
+        color: #bfbfbf;
+
+        ._edit, ._cancel {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+
+        &:hover {
+
+          ._edit {
+            color:#0f88a5;
+          }
+
+          ._cancel {
+            color:#d95254;
+          }
+        }
+      }
+
+      ._data {
+        margin-left: 111px;
+
+        table {
+          width: 80%;
+
+          thead {
+            font-size: 12px;
+            font-weight: bold;
+
+            td {
+              border: 0;
+              padding-bottom: 3px;
+              padding-top: 4px;
+              width: 20%;
+            }
+          }
+
+          tbody {
+            td {
+              font-size: 14px;
+              padding: 8px 0;
+            }
+          }
+        }
+      }
+    }
+
+    ._stats {
+      table {
+        width: auto;
+      }
+
+      ._th {
+        font-weight: bold;
+        font-size: 12px;
+        text-align: right;
+        width: 91px;
+        padding-right: 18px;
+        padding-bottom: 11px;
+      }
+
+      ._data {
+        font-size: 18px;
+
+        ._sign {
+          font-size: 16px;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    ._matches {
+      margin-bottom: 41px;
+
+      ._more {
+        color: #0f88a5;
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 12px;
+        margin-left: 110px;
+      }
+
+      table {
+        margin-bottom: 13px;
+        font-size: 12px;
+        width: 75%;
+
+        thead {
+
+          td {
+            font-weight: bold;
+            padding-bottom: 11px;
+
+            &:first-child {
+              text-align: right;
+              width: 91px;
+              padding-right: 18px;
+            }
+          }
+        }
+
+        tbody {
+
+          td {
+            padding-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}

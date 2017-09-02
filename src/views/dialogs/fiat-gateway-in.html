@@ -1,0 +1,364 @@
+<style>
+    .cf:before,
+    .cf:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+
+    .cf:after {
+        clear: both;
+    }
+
+    .left-clmn {
+        font-weight: bold;
+        padding-right: 10px;
+        text-align: right;
+        width: 130px;
+    }
+
+    .methods {
+        margin-bottom: 30px;
+        margin-top: 15px;
+    }
+
+    .methods .el {
+        height: 60px;
+        width: 130px;
+
+        float: left;
+
+        cursor: pointer;
+
+        border: 2px solid #bbb;
+        border-radius: 5px;
+
+        margin-bottom: 10px;
+
+        margin-right: 7px;
+        margin-left: 7px;
+    }
+
+    .methods .el.selected {
+        border-color: #0f88a5;
+    }
+
+    .expireDate {
+        float: left;
+        width: 15%;
+    }
+
+    .expireDelimiter {
+        float: left;
+        width: 5%;
+        text-align: center;
+        padding-top: 9px;
+        font-size: 20px;
+    }
+
+    .slideText {
+        font-weight: bold;
+        font-size: 14px;
+        color: #0f88a5;
+        cursor: pointer;
+    }
+
+    [data-method='SEPA'] {
+        background: url(../../assets/payment_icons/sepa.png) no-repeat;
+    }
+
+    [data-method='MoneyPolo'] {
+        background: url(../../assets/payment_icons/moneyPolo.png) no-repeat;
+    }
+
+    [data-method='Credit Card'] {
+        background: url(../../assets/payment_icons/credit.png) no-repeat;
+    }
+
+    [data-method='OKPay'] {
+        background: url(../../assets/payment_icons/okpay.png) no-repeat;
+    }
+
+    [data-method='PerfectMoney'] {
+        background: url(../../assets/payment_icons/perfect.png) no-repeat;
+    }
+
+    [data-method='AdvCash'] {
+        background: url(../../assets/payment_icons/advCash.png) no-repeat;
+    }
+
+    [data-method='SWIFT'] {
+        background: url(../../assets/payment_icons/swift.png) no-repeat;
+    }
+
+    [data-method='SOFORT'] {
+        background: url(../../assets/payment_icons/sofort.png) no-repeat;
+    }
+
+    [data-method='Fiat Code'] {
+        background: url(../../assets/payment_icons/codes.png) no-repeat;
+        background-color: #fff;
+        background-size: contain;
+    }
+</style>
+
+
+<div class="_header" ng-show="_title">{{_title}}
+    <div class="_close" ng-click="$close()"></div>
+</div>
+<div class="_body">
+    <table class="_center-info">
+        <tbody>
+        <tr>
+            <td class="_label">Available:</td>
+            <td class="_value">
+                <span btc-muted value="wallet.availableFunds|currencyToFixed:wallet.currency"></span> {{wallet.currency}}
+            </td>
+        </tr>
+        <tr class="_last">
+            <td class="_label">Blocked:</td>
+            <td class="_value">
+                <span btc-muted value="wallet.blockedFunds|currencyToFixed:wallet.currency"></span> {{wallet.currency}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="_block component-form">
+    <div btc-local-notification="errorMessage" class="_error"></div>
+    <div class="component-table_header">
+        <span class="_txt _gray">Select payment method</span>
+    </div>
+    <div class="methods cf">
+        <div class="el" ng-class="(method.name == current_method)? 'selected':''" data-method="{{ method.name }}" ng-repeat="method in methods" ng-click="setCurrentMethod(method.name)"></div>
+    </div>
+    <div class="_field _full _nomargin">
+        <div style="margin-top: 10px;" ng-if="current_method == 'SOFORT'">
+            <div class="component-table_header">
+                <span class="_txt _gray">Payment details</span>
+            </div>
+            <form method="post" action="https://www.sofort.com/payment/start" id="SofortIn">
+                <label>
+                    <span class="_label">Amount</span>
+                    <input id="sofortEuro" type="text" name="amount" ng-model="sofort.amount" ng-change="onChangeAmount('sofortEuro', 'sofortEuroToGet')" placeholder="Deposit amount">
+                    <span class="_mark">{{wallet.currency}}</span>
+                    <input type="hidden" name="user_id">
+                    <input type="hidden" name="project_id">
+                    <input type="hidden" name="currency_id">
+                    <input type="hidden" name="reason_1">
+                    <input type="hidden" name="reason_2">
+                    <input type="hidden" name="user_variable_0">
+                    <input type="hidden" name="hash">
+                </label>
+            </form><br/>
+            <label>
+                <label class="_label">To be credited</label>
+                <input id="sofortEuroToGet" type="text" name="Amount" ng-model="sofort.toget" ng-change="onChangeToGet('sofortEuroToGet', 'sofortEuro')" placeholder="To be credited">
+                <span class="_mark">{{wallet.currency}}</span>
+            </label>
+            <br/><br/>
+            <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+        </div>
+        <div style="margin-top: 10px;" ng-if="current_method == 'MoneyPolo'">
+            <div class="component-table_header">
+                <span class="_txt _gray">Payment details</span>
+            </div>
+            <form method="post" action="https://secure.moneypolo.com/payment/process.php" id="moneyPoloIn">
+                <label>
+                    <span class="_label">Amount</span>
+                    <input id="mpEuro" type="text" name="Amount" ng-model="moneyPolo.amount" ng-change="onChangeAmount('mpEuro', 'mpEuroToGet')" placeholder="Deposit amount">
+                    <span class="_mark">{{wallet.currency}}</span>
+                    <input type="hidden" name="Currency" ng-model="moneyPolo.currency">
+                    <input type="hidden" name="MerchantCode" ng-model="moneyPolo.merchantCode">
+                    <input type="hidden" name="MerchantDocID" ng-model="moneyPolo.merchantDocId">
+                    <input type="hidden" name="Signature" ng-model="moneyPolo.signature">
+                    <input type="hidden" name="TestMode" ng-model="moneyPolo.testMode">
+                    <input type="hidden" name="Details" ng-model="moneyPolo.description">
+                </label>
+            </form><br/>
+            <label>
+                <label class="_label">To be credited</label>
+                <input id="mpEuroToGet" type="text" name="Amount" ng-model="moneyPolo.toget" ng-change="onChangeToGet('mpEuroToGet', 'mpEuro')" placeholder="To be credited">
+                <span class="_mark">{{wallet.currency}}</span>
+            </label>
+            <br/><br/>
+            <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+        </div>
+        <div style="margin-top: 10px;" ng-if="current_method == 'AdvCash'">
+            <div class="component-table_header">
+                <span class="_txt _gray">Payment details</span>
+            </div>
+            <form method="post" action="https://wallet.advcash.com/sci/" id="advCashIn">
+                <label>
+                    <span class="_label">Amount</span>
+                    <input id="acEuro" type="text" name="ac_amount" ng-model="ac.amount" ng-change="onChangeAmount('acEuro', 'acEuroToGet')" placeholder="Deposit amount">
+                    <span class="_mark">{{wallet.currency}}</span>
+                    <input type="hidden" name="ac_account_email">
+                    <input type="hidden" name="ac_sci_name">
+                    <input type="hidden" name="ac_currency">
+                    <input type="hidden" name="ac_order_id">
+                    <input type="hidden" name="ac_sign">
+                    <input type="hidden" name="ac_comments">
+                </label>
+            </form><br/>
+            <label>
+                <label class="_label">To be credited</label>
+                <input id="acEuroToGet" type="text" name="Amount" ng-model="ac.toget" ng-change="onChangeToGet('acEuroToGet', 'acEuro')" placeholder="To be credited">
+                <span class="_mark">{{wallet.currency}}</span>
+            </label>
+            <br/><br/>
+            <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+        </div>
+
+        <div style="margin-top: 10px;" ng-if="current_method == 'Fiat Code'">
+            <div class="component-table_header">
+                <span class="_txt _gray">Payment details</span>
+            </div>
+            <label>
+                <span class="_label">SPACE-CODE</span>
+                <input type="text" ng-model="fcode.code" placeholder="Payment code">
+            </label>
+        </div>
+
+        <div style="margin-top: 10px;" ng-if="current_method == 'SEPA'">
+            <div class="component-table_header">
+                <span class="_txt _gray">Payment details</span>
+            </div>
+
+            <table class="requisites">
+                <tr>
+                    <td class="left-clmn">IBAN:</td>
+                    <td>CZ6322500000000100414286</td>
+                </tr>
+                <tr>
+                    <td class="left-clmn">SWIFT / BIC:</td>
+                    <td>CTASCZ22</td>
+                </tr>
+                <tr>
+                    <td class="left-clmn">Beneficiary Name:</td>
+                    <td>Mayzus Financial Services Ltd</td>
+                </tr>
+                <tr>
+                    <td class="left-clmn">Details of Payment:</td>
+                    <td>ACC.AGR.9311.68232 TO OWN ACC S-{{ user.id }}</td>
+                </tr>
+            </table>
+            <br/>
+            <label btc-fee-module wallet="wallet" fee="currentFee"></label><br><br>
+            <strong>Attention! Max transaction amount is €15,000. Conversion into USD applied with 0.5% fee.</strong>
+
+        </div>
+        <div style="margin-top: 10px;" ng-if="current_method == 'SWIFT' && wallet.currency=='EUR'">
+
+            <div class="component-table_header">
+                <span class="_txt _gray">Beneficiary</span>
+            </div>
+            <div class="requisites">
+                <table>
+                    <tr>
+                        <td class="left-clmn">Beneficiary Name:</td>
+                        <td>MAYZUS FINANCIAL SERVICES LIMITED</td>
+                    </tr>
+                    <tr>
+                        <td class="left-clmn">Beneficiary Address:</td>
+                        <td>869 High Road, London, N12 8QA, UK</td>
+                    </tr>
+                    <tr>
+                        <td class="left-clmn">IBAN:</td>
+                        <td>CZ8008000000000003681972</td>
+                    </tr>
+                </table>
+                <br/><br/>
+                <div class="component-table_header">
+                    <span class="_txt _gray">Beneficiary's bank</span>
+                </div>
+                <table>
+                    <tr>
+                        <td class="left-clmn">SWIFT / BIC:</td>
+                        <td>GIBACZPXXXX</td>
+                    </tr>
+                    <tr>
+                        <td class="left-clmn">Bank name:</td>
+                        <td>CESKÁ SPORITELNA, A.S.</td>
+                    </tr>
+                    <tr>
+                        <td class="left-clmn">Bank address:</td>
+                        <td>OLBRACHTOVA 62 PRAGUE 14000 Czech Republic</td>
+                    </tr>
+                </table>
+                <br/><br/>
+                <div class="component-table_header">
+                    <span class="_txt _gray">Other instructions</span>
+                </div>
+                <table>
+                    <tr>
+                        <td class="left-clmn">Details of Payment:</td>
+                        <td>ACC.AGR.9311.68232 TO OWN ACC S-{{ user.id }}</td>
+                    </tr>
+                </table>
+                <br/>
+                <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+            </div>
+        </div>
+        <div style="margin-top: 10px;" ng-if="current_method == 'SWIFT' && wallet.currency=='USD'">
+
+            <div class="component-table_header">
+                <span class="_txt _gray">Beneficiary</span>
+            </div>
+            <div class="requisites">
+                <table>
+                    <tr>
+                        <td class="left-clmn">Beneficiary Name:</td>
+                        <td>MAYZUS FINANCIAL SERVICES LIMITED</td>
+                    </tr>
+                    <tr>
+                        <td class="left-clmn">Beneficiary Address:</td>
+                        <td>869 High Road, London, N12 8QA, UK</td>
+                    </tr>
+                    <tr>
+                        <td class="left-clmn">Account number:</td>
+                        <td>3004010033</td>
+                    </tr>
+                </table>
+                <br/><br/>
+                <div class="component-table_header">
+                    <span class="_txt _gray">Beneficiary's bank</span>
+                </div>
+                <table>
+                    <tr>
+                        <td class="left-clmn">SWIFT / BIC:</td>
+                        <td>CPITMNUB</td>
+                    </tr>
+                    <tr>
+                        <td class="left-clmn">Bank name:</td>
+                        <td>CAPITRON BANK</td>
+                    </tr>
+                    <tr>
+                        <td class="left-clmn">Bank address:</td>
+                        <td>Branch № 3004, Ulaanbaatar, Mongolia</td>
+                    </tr>
+                </table>
+                <br/><br/>
+                <div class="component-table_header">
+                    <span class="_txt _gray">Other instructions</span>
+                </div>
+                <table>
+                    <tr>
+                        <td class="left-clmn">Details of Payment:</td>
+                        <td>ACC.AGR.&lt;9311.68232&gt; TO OWN ACC S-{{ user.id }}</td>
+                    </tr>
+                </table>
+                <br/>
+                <label btc-fee-module wallet="wallet" fee="currentFee"></label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="_body">
+    <div class="_actions">
+        <div class="_button" onclick="window.print()" ng-if="current_method == 'SEPA' || current_method == 'SWIFT'">Print</div>
+        <div class="_button" ng-click="submit()" ng-if="current_method != 'SEPA' && current_method != 'SWIFT'">FUND MY ACCOUNT</div>
+        <div class="_cancel" ng-click="$close()">Cancel</div>
+    </div>
+</div>

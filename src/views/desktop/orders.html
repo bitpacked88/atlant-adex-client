@@ -1,0 +1,66 @@
+<div class="block-desktop-myorders" btc-graph-resize="bottom" ng-class="{_cta: showCTA}" ng-if="orders.auth">
+    <div class="_cta" ng-show="orders.showCTA">
+        <p ng-show="!orders.fundsAreLow">Add your orders by clicking the button</p>
+        <p ng-show="orders.fundsAreLow">Fund your account and place an order by clicking the buttons</p>
+        <div ng-show="orders.fundsAreLow" class="button" ng-click="orders.onAddFunds()">Fund my account</div>
+        <div class="button" ng-click="orders.onTrade()">New Order <span class="_extra-font">(F9)</span></div>
+    </div>
+    <div class="component-table_header"><span class="_txt">My Orders</span></div>
+    <table class="component-table _info _table-header">
+        <thead>
+        <tr>
+            <td class="_side-col">Side</td>
+            <td class="_type-col">Type</td>
+            <td class="_price-col">Price <span class="_thick">{{baseCurrency.symbol}}</span></td>
+            <td ng-if="isTS()" class="_level-col">Level</td>
+            <td class="_actual-amount-col">Current Size <span class="_thick">{{currentPair.symbol}}</span></td>
+            <td class="_original-amount-col">Initial Size <span class="_thick">{{currentPair.symbol}}</span></td>
+            <td class="_w1"></td>
+            <td class="_status-col">Status</td>
+            <td class="_action-col">Action</td>
+        </tr>
+        </thead>
+    </table>
+    <div class="_scrollable" btc-resizable="63" btc-nicescroll>
+        <table class="component-table _info _hovers">
+            <tbody>
+                <tr ng-repeat="item in orders.data track by $index"
+                    ng-class="{'_muted': item.status == 'filled' || item.status == 'cancelled', '_bold': item.status == 'partiallyFilled', '_editable': item.editable}">
+                    <td class="_side-col">{{item.side | toBool:'Sell':'Buy'}}</td>
+                    <td class="_type-col">{{orders.types[item.order_type]}}</td>
+                    <td class="_price-col">
+                        <div ng-if="item.order_type != 'TRAILINGSTOP'">
+                            <input type="text" btc-focus focus="{{item.editable}}" ng-show="orders.isEditable($index, 'rate')"
+                                   ng-change="orders.change($index, 'edit')" ng-model="item.edit" />
+                            <span ng-hide="orders.isEditable($index, 'rate')" btc-muted value="(baseCurrency.name == 'BTC') ? (item.edit | toFixed:8) : (item.edit | toFixed:2)"></span>
+                        </div>
+                        <div ng-if="item.order_type == 'TRAILINGSTOP'">{{ item.rate }}</div>
+                    </td>
+                    <td ng-if="isTS()" class="_level-col">
+                        <input ng-if="item.order_type == 'TRAILINGSTOP'" type="text" btc-focus focus="{{item.editable}}" ng-show="orders.isEditable($index, 'ts_level')"
+                               ng-change="orders.change($index, 'edit')" ng-model="item.edit" />
+                        <span ng-if="item.order_type == 'TRAILINGSTOP'" ng-hide="orders.isEditable($index, 'ts_level')" btc-muted value="(baseCurrency.name == 'BTC') ? (item.edit | toFixed:8) : (item.edit | toFixed:2)"></span>
+                    </td>
+                    <td class="_actual-amount-col">
+                        <span btc-muted value="item.actual_amount | toFixed:2"></span>
+                    </td>
+                    <td class="_original-amount-col">
+                        <input type="text" ng-show="orders.isEditable($index, 'original_amount')"
+                               ng-change="orders.change($index, 'original_amount')" ng-model="item.original_amount" />
+                        <span ng-hide="orders.isEditable($index, 'original_amount')" btc-muted value="item.original_amount | toFixed:2"></span>
+                    </td>
+                    <td class="_w1"><div ng-class="'_' + item.status + '_ico'"></div></td>
+                    <td class="_status-col">{{orders.statuses[item.status]}}</td>
+                    <td class="_action-col">
+                        <span ng-show="item.status == 'accepted'" class="_btns">
+                            <span class="_link _edit" ng-hide="item.editable" ng-if="item.actual_amount == item.original_amount" ng-click="orders.onEdit($index)">Edit</span>
+                            <span class="_link _save" ng-show="item.editable" ng-click="orders.onSave($index)">Save</span>
+                            <span ng-if="item.actual_amount == item.original_amount && !item.editable">/</span>
+                        </span>
+                        <span class="_link _cancel" ng-hide="item.status == 'filled' || item.status == 'cancelled' || item.editable" ng-click="orders.onCancel($index, item.id)">Cancel</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,161 @@
+.block-inner-change {
+  margin: 0 0 30px;
+
+
+  ._fields {
+    text-align: center;
+    width: 648px;
+    margin: 0 auto 40px;
+
+    &._inputs {
+      margin: 50px auto;
+    }
+
+    ._tabs {
+      margin: 60px 0;
+      list-style: none;
+      text-align: center;
+
+      li {
+        display: inline-block;
+
+        a {
+          display: inline-block;
+          width: 312px;
+          font-size: 17px;
+          font-weight: normal;
+          color: #b3b3bc;
+          text-transform: uppercase;
+          text-decoration: none;
+          border-bottom: 2px solid #cdcdd4;
+          text-align: center;
+          letter-spacing: 3px;
+          padding-bottom: 18px;
+          padding-top: 2px;
+
+          &._active {
+            font-weight: normal;
+            color: #0f88a5;
+            border-bottom-color: #0f88a5;
+          }
+        }
+        div {
+          text-align: center;
+          font-size: 16px;
+          //display: inline-block;
+          width: 312px;
+          margin-top:20px;
+        }
+      }
+    }
+
+    ._col {
+      float: left;
+
+      &:first-of-type  {
+        margin-right: 24px;
+      }
+
+      ._field {
+        text-align: left;
+        position: relative;
+        margin-bottom: 5px;
+
+        ._label {
+          font-size: 15px;
+          font-weight: normal;
+        }
+
+        input {
+          height: 48px;
+          width: 240px;
+          font-size: 24px;
+          padding: 0 55px 0 15px;
+        }
+
+        ._symbol {
+          position: absolute;
+          right: 10px;
+          top: 39px;
+          font-size: 18px;
+          font-weight: bold;
+          color: #0f88a5;
+        }
+
+        &._disabled {
+          ._tilda {
+            position: absolute;
+            left: 11px;
+            top: 39px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #c7c7c7;
+          }
+
+          input {
+            width: 225px;
+            padding-left: 30px;
+          }
+
+          ._symbol {
+            color: #c7c7c7;
+          }
+        }
+      }
+
+      ._hint {
+        color: #888;
+        text-align: left;
+        font-size: 12px;
+      }
+    }
+
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  ._actions {
+
+    text-align: left;
+
+    .button {
+      width: 648px;
+      height: 48px;
+      font-size: 18px;
+      line-height: 48px;
+      background-repeat: repeat-x;
+
+      &:hover {
+        text-decoration: none;
+        border-color: #3e6f9e;
+        width: 644px;
+        height: 44px;
+        line-height: 44px;
+      }
+    }
+
+    ._auth {
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+
+      a {
+        color: #0f88a5;
+        text-decoration: underline;
+      }
+
+      p {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  ._messages {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+}

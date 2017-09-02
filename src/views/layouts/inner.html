@@ -1,0 +1,35 @@
+<div class="block-inner-wrapper">
+    <div class="block-inner-header">
+        <div class="_name">{{rootTitle}}</div>
+        <div class="block-inner-options" ng-controller="innerOptionsCtrl">
+            <div class="_current" ng-click="toggle()">
+                <span class="_txt _inner-txt">{{currentPair.derived.name}}/{{currentPair.base.name}}</span>
+                <div ng-class="current_class">{{baseCurrency.symbol}} <span btc-muted value="(baseCurrency.name == 'BTC') ? (rate | toFixed:8) : (rate | toFixed:2)"></span></div>
+            </div>
+
+            <ul class="_popup" ng-show="show">
+                <li ng-repeat="pair in pairs"><a href="#" ng-click="changePair($event, pair.name)">{{pair.derived}} / {{pair.base}}</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <ui-view></ui-view>
+
+    <div class="block-inner-cta" ng-controller="innerCtaCtrl" ng-show="show">
+        <div class="_cta">Welcome home, trader</div>
+        <div class="_login">
+            <div class="_sign"><a href="#"><span class="_ico"></span>Sign In</a><span class="_or">or</span></div>
+            <div class="_button">Sign Up</div>
+        </div>
+    </div>
+    <div class="block-inner-footer">
+        <div class="_social">
+            <a target="_blank" href="https://www.facebook.com/atlantplatform"><span class="_btn _fb"></span></a>
+            <a target="_blank" href="https://twitter.com/atlantio"><span class="_btn _tw"></span></a>
+            <a target="_blank" href="https://www.linkedin.com/company/atlant.io"><span class="_btn _in"></span></a>
+            <a target="_blank" href="https://plus.google.com/u/0/113261799912933728481"><span class="_btn _plus"></span></a>
+        </div>
+        <div class="_copy">&copy; 2017 ATLANT DEX</div>
+        <div class="_address">Powered by the ATLANT Platform<br /><a href="mailto:contact@atlant.io">contact@atlant.io</a></div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="_header" ng-show="_title">{{_title}}<div class="_close" ng-click="$close()"></div></div>
+<div class="_body">
+    <div class="_form component-form">
+        <div class="_field _full">
+            <label>
+                <span class="_label">HTTP API key type</span>
+                <select ng-model="type">
+                    <option value="info" ng-selected="isType('info')">INFO</option>
+                    <option value="trade" ng-selected="isType('trade')">TRADE</option>
+                </select>
+            </label>
+        </div>
+    </div>
+
+    <div class="_actions">
+        <div class="_button" ng-click="onGenerate()">{{_confirmButtonText}}</div>
+        <div class="_cancel" ng-click="$close()">Cancel</div>
+    </div>
+</div>

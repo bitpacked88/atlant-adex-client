@@ -1,0 +1,49 @@
+._crypto-gateway {
+
+  ._qr {
+    text-align: center;
+    width: 256px;
+    margin: 0 auto;
+  }
+
+  ._txt {
+    background-color: #f6f6f6;
+  }
+
+  ._address {
+
+    input[type="text"] {
+      font-size: 18px;
+      height: 34px;
+      color: #888;
+      margin-right: -37px;
+
+      &:disabled {
+        color: #888;
+      }
+    }
+
+    ._copy-button {
+      cursor: pointer;
+      width: 36px;
+      height: 34px;
+      display: inline-block;
+      vertical-align: bottom;
+      background: #3eb9d4 url("@{assets}/affiliate/copy_link_button.gif") center no-repeat;
+
+      &.zeroclipboard-is-hover {
+        background-color: #41c7e3;
+      }
+    }
+  }
+
+  ._hint {
+    font-size: 11px;
+    color: #555;
+    margin-top: 5px;
+  }
+
+  ._center {
+    text-align: center;
+  }
+}

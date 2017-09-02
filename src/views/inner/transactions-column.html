@@ -1,0 +1,62 @@
+<div class="block-inner-transactions-column">
+
+    <div class="_account">
+        <div class="_title">Settlement Currency</div>
+        <div class="_id" ng-bind="currency.base" ng-click="toggle('base')">&nbsp;</div>
+
+        <ul class="_popup" ng-show="visible.base">
+            <li ng-repeat="(base, item) in pairs" ng-hide="base == currency.base">
+                <a ui-sref="root.inner.left-col.transactions({id:base.toLowerCase()+'_'+base.toLowerCase()})">
+                    {{base}}
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="_account">
+        <div class="_title">Transaction Currency</div>
+        <div class="_id" ng-hide="currency.base == currency.derived" ng-bind="currency.derived" ng-click="toggle('derived')">&nbsp;</div>
+        <div class="_id" ng-show="currency.base == currency.derived" ng-click="toggle()">None</div>
+
+        <ul class="_popup" ng-show="visible.derived">
+            <li ng-hide="currency.base == currency.derived">
+                <a ui-sref="root.inner.left-col.transactions({id:currency.base.toLowerCase()+'_'+currency.base.toLowerCase()})">
+                    None
+                </a>
+            </li>
+            <li ng-repeat="item in pairs[currency.base]" ng-hide="item == currency.derived">
+                <a ui-sref="root.inner.left-col.transactions({id:currency.base.toLowerCase()+'_'+item.toLowerCase()})">
+                    {{item}}
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="component-left-column-menu">
+        <li ui-sref-active="_active">
+            <a ui-sref="root.inner.left-col.transactions({id: (currency.base.toLowerCase()+'_'+currency.derived.toLowerCase()), status: 'all'})">All directions</a>
+        </li>
+        <li ui-sref-active="_active">
+            <a ui-sref="root.inner.left-col.transactions({id: (currency.base.toLowerCase()+'_'+currency.derived.toLowerCase()), status: 'in'})">Deposit</a>
+        </li>
+        <li ui-sref-active="_active">
+            <a ui-sref="root.inner.left-col.transactions({id: (currency.base.toLowerCase()+'_'+currency.derived.toLowerCase()), status: 'out'})">Withdrawal</a>
+        </li>
+    </ul>
+
+    <div class="_details">
+        <div class="_details-title">Account Details</div>
+        <div class="_status">
+            Status &mdash; <b>Opened</b>,
+            <br/>
+            <span ng-show="currency.base == currency.derived">
+                Currency &mdash; <b>{{currency.base}}</b>
+            </span>
+            <span ng-show="currency.base != currency.derived">
+                Pair &mdash; <b>{{currency.derived}} / {{currency.base}}</b>
+            </span>
+        </div>
+
+        <a ui-sref="root.inner.right-col.accounts" class="button">Back to wallet</a>
+    </div>
+</div>

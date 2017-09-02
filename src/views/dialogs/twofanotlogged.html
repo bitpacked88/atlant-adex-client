@@ -1,0 +1,59 @@
+<div class="_header" ng-show="_title">
+    {{_title}}
+    <div class="_close" ng-click="$close()"></div>
+</div>
+
+<div class="_body" ng-class="{_loading:loading}">
+
+    <btc-inner-loader show="loading" title="Loading..."></btc-inner-loader>
+
+    <div btc-local-notification="error" class="_error"></div>
+
+    <div ng-show=" toShow === 'code_input' ">
+        <form class="submitting-form" ng-submit="sendCode()">
+            <div class="_form component-form component-html">
+                <p class="_info">
+                    The code has been sent to confirm {{operationsToConfirm[twoFAParams.todo]}}.<br />
+                    Please type it below.
+                </p>
+                <p class="_new">
+                    Did not receive your code? Click <a ng-click="resendCode($event)">here</a> to resend.
+                </p>
+                <div class="_field _full">
+                    <label>
+                        <span class="_label">2FA code</span>
+                        <input type="text" ng-model="twoFAParams.smsCode" />
+                    </label>
+                </div>
+                <div btc-local-notification="newRequestAllowedTimerMessage" class="_error"></div>
+            </div>
+            <div class="_actions">
+                <div class="_button" ng-click="sendCode()">Proceed</div>
+                <div class="_cancel" ng-click="$close()">Cancel</div>
+            </div>
+        </form>
+    </div>
+
+    <div ng-show=" toShow === 'limit_reached' ">
+        <div class="_form component-form component-html">
+            <p class="_info">
+                You reached code request limit.<br />
+                Please contact us via live chat.
+            </p>
+        </div>
+        <div class="_actions">
+            <div class="_button" ng-click="$close()">Ok</div>
+        </div>
+    </div>
+
+    <div ng-show=" toShow === 'result_okay' ">
+        <div class="_form component-form component-html">
+            <p class="_info">
+                Password recovery instructions have been sent to your Email
+            </p>
+        </div>
+        <div class="_actions">
+            <div class="_button" ng-click="$close()">Ok</div>
+        </div>
+    </div>
+</div>
