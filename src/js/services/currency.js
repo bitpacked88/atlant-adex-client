@@ -6,7 +6,7 @@
             pairs: [],
             pairsList: [],
             currentPair: "",
-            defaultPair: "BTC_ETH",
+            defaultPair: "BTC_ATL",
 
             currencies: [],
             currenciesByName: []

@@ -2,5 +2,6 @@ node_modules
 src/bower_components
 src/web.config
 src/superstatic.json
+src/css
 dist/
 build.json
